@@ -3,7 +3,7 @@ name: Split Monorepo
 on:
   push:
     branches:
-      - master
+      - test
 
 jobs:
   provide-packages-json:
@@ -47,7 +47,5 @@ jobs:
           fetch-depth: '0'
           persist-credentials: 'false'
       - run: |
-          git remote add ${{ matrix.package }} https://zingimmick:${{ secrets.ACCESS_TOKEN }}@github.com/zingimmick/${{ matrix.package }}.git || true
-          ./bin/splitsh-lite --prefix=packages/${{ matrix.package }}
-          SHA1=$(./bin/splitsh-lite --prefix=packages/${{ matrix.package }})
-          git push ${{ matrix.package }} "$SHA1:$GITHUB_REF" -f
+          SHA1=$(git subtree split --prefix=packages/${{ matrix.package }})
+          git push https://zingimmick:${{ secrets.ACCESS_TOKEN }}@github.com/zingimmick/${{ matrix.package }}.git "$SHA1:$GITHUB_REF" -f
