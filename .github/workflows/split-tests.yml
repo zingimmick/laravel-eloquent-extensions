@@ -1,0 +1,60 @@
+name: Split Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+env:
+  # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
+  COMPOSER_ROOT_VERSION: "dev-master"
+
+jobs:
+  provide-packages-json:
+    # see json juggling: https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - uses: shivammathur/setup-php@2.11.0
+        with:
+          php-version: 7.4
+
+      - uses: "ramsey/composer-install@v1"
+
+      # get package json list
+      - id: output_data
+        run: echo "::set-output name=matrix::$(vendor/bin/monorepo-builder packages-json --tests)"
+
+    outputs:
+      matrix: ${{ steps.output_data.outputs.matrix }}
+
+  split-tests:
+    needs: provide-packages-json
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJson(needs.provide-packages-json.outputs.matrix )}}
+
+    name: Split Tests of ${{ matrix.package }}
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - uses: shivammathur/setup-php@2.11.0
+        with:
+          php-version: 7.4
+          coverage: none
+
+      - uses: "ramsey/composer-install@v1"
+
+      - run: vendor/bin/monorepo-builder localize-composer-paths packages/${{ matrix.package }}/composer.json --ansi
+
+      - run: composer update --no-progress --ansi --working-dir packages/${{ matrix.package }}
+
+      - working-directory: packages/${{ matrix.package }}
+        run: vendor/bin/phpunit

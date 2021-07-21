@@ -1,0 +1,81 @@
+{
+    "name": "zing/laravel-eloquent-extensions",
+    "description": "Mono repository for all Laravel eloquent extensions",
+    "keywords": ["laravel", "eloquent", "extensions"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zingimmick",
+            "email": "zingimmick@outlook.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "ext-json": "*",
+        "illuminate/database": "^6.0 || ^7.0 || ^8.0",
+        "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "~1.3.3 || ^1.4.2",
+        "moontoast/math": "^1.0",
+        "nunomaduro/larastan": "^0.7.2",
+        "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
+        "phpunit/phpunit": "^8.0,<8.5.12 || ^9.3.3",
+        "symplify/monorepo-builder": "^8.3 || ^9.2",
+        "zing/coding-standard": "^4.0"
+    },
+    "replace": {
+        "zing/china-administrative-divisions-laravel": "self.version",
+        "zing/laravel-eloquent-images": "self.version",
+        "zing/laravel-eloquent-tags": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zing\\ChinaAdministrativeDivisions\\": "packages/china-administrative-divisions-laravel/src",
+            "Zing\\LaravelEloquentImages\\": "packages/laravel-eloquent-images/src",
+            "Zing\\LaravelEloquentTags\\": "packages/laravel-eloquent-tags/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zing\\ChinaAdministrativeDivisions\\Tests\\": "packages/china-administrative-divisions-laravel/tests",
+            "Zing\\LaravelEloquentImages\\Tests\\": "packages/laravel-eloquent-images/tests",
+            "Zing\\LaravelEloquentTags\\Tests\\": "packages/laravel-eloquent-tags/tests"
+        }
+    },
+    "scripts": {
+        "lint:rector": "@fix:rector --dry-run",
+        "lint:ecs": "ecs check --ansi",
+        "lint:phpstan": "phpstan analyse --ansi",
+        "fix:rector": "rector process --ansi",
+        "fix:ecs": "@lint:ecs --fix",
+        "test:phpunit": "phpunit --colors=always",
+        "lint": [
+            "@lint:rector",
+            "@lint:ecs",
+            "@lint:phpstan"
+        ],
+        "fix": [
+            "@fix:rector",
+            "@fix:ecs"
+        ],
+        "test": [
+            "@test:phpunit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zing\\ChinaAdministrativeDivisions\\ChinaAdministrativeDivisionsServiceProvider",
+                "Zing\\LaravelEloquentImages\\EloquentImagesServiceProvider",
+                "Zing\\LaravelEloquentTags\\EloquentTagsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

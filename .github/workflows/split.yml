@@ -1,0 +1,53 @@
+name: Split Monorepo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  provide-packages-json:
+    # see json juggling: https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
+    # see https://stackoverflow.com/a/62953566/1348344
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      # required for matrix of packages set
+      - uses: shivammathur/setup-php@2.11.0
+        with:
+          php-version: 7.4
+          coverage: none
+
+      - uses: "ramsey/composer-install@v1"
+
+      # get package json list
+      - id: output_data
+        run: echo "::set-output name=matrix::$(vendor/bin/monorepo-builder packages-json)"
+
+    # this step is needed, so the output gets to the next defined job
+    outputs:
+      matrix: ${{ steps.output_data.outputs.matrix }}
+
+  split:
+    needs: provide-packages-json
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{fromJson(needs.provide-packages-json.outputs.matrix)}}
+
+    name: Monorepo Split of ${{ matrix.package }}
+
+    steps:
+      - uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: '0'
+          persist-credentials: 'false'
+      - run: |
+          git remote add ${{ matrix.package }} https://zingimmick:${{ secrets.ACCESS_TOKEN }}@github.com/zingimmick/${{ matrix.package }}.git || true
+          ./bin/splitsh-lite --prefix=packages/${{ matrix.package }}
+          SHA1=$(./bin/splitsh-lite --prefix=packages/${{ matrix.package }})
+          git push ${{ matrix.package }} "$SHA1:$GITHUB_REF" -f
