@@ -8,4 +8,4 @@ parameters:
     checkMissingIterableValueType: false
     ignoreErrors:
         - '#Method (.*?) should return Illuminate\\Database\\Eloquent\\Collection but returns Illuminate\\Support\\Collection<int, Illuminate\\Database\\Eloquent\\Model>.#'
-        - "#Parameter \\#1 \\$callback of function forward_static_call expects callable\\(\\): mixed, array\\(string, 'query'\\) given.#"
+        - "#Parameter \\#1 \\$(callback|function) of function forward_static_call expects callable\\(\\): mixed, array\\(string, 'query'\\) given.#"

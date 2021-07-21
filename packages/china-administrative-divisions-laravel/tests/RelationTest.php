@@ -87,7 +87,7 @@ class RelationTest extends TestCase
         self::assertTrue(City::query()->whereProvinceCodeNot($this->faker->name)->exists());
         self::assertTrue(City::query()->whereProvinceCode($province->code)->exists());
         self::assertTrue(City::query()->whereProvinceCode([$province->code])->exists());
-        $city = City::query()->whereProvinceCode($province->code)->first();
+        $city = City::query()->whereProvinceCode($province->code)->firstOrFail();
         self::assertTrue($city->province->is($province));
         self::assertSame($city->{$city->getProvinceCodeName()}, $city->getProvinceCode());
 
@@ -98,7 +98,7 @@ class RelationTest extends TestCase
         self::assertTrue(Area::query()->whereCityCodeNot($this->faker->name)->exists());
         self::assertTrue(Area::query()->whereCityCode($city->code)->exists());
         self::assertTrue(Area::query()->whereCityCode([$city->code])->exists());
-        $area = Area::query()->whereCityCode($city->code)->first();
+        $area = Area::query()->whereCityCode($city->code)->firstOrFail();
         self::assertTrue($area->city->is($city));
         self::assertSame($area->{$area->getCityCodeName()}, $area->getCityCode());
 
@@ -108,7 +108,7 @@ class RelationTest extends TestCase
         self::assertTrue(Street::query()->whereAreaCodeNot($this->faker->name)->exists());
         self::assertTrue(Street::query()->whereAreaCode($area->code)->exists());
         self::assertTrue(Street::query()->whereAreaCode([$area->code])->exists());
-        $street = Street::query()->whereAreaCode($area->code)->first();
+        $street = Street::query()->whereAreaCode($area->code)->firstOrFail();
         self::assertTrue($street->area->is($area));
         self::assertSame($street->{$street->getAreaCodeName()}, $street->getAreaCode());
 
@@ -117,7 +117,7 @@ class RelationTest extends TestCase
         self::assertTrue(Village::query()->whereStreetCodeNot($this->faker->name)->exists());
         self::assertTrue(Village::query()->whereStreetCode($street->code)->exists());
         self::assertTrue(Village::query()->whereStreetCode([$street->code])->exists());
-        $village = Village::query()->whereStreetCode($street->code)->first();
+        $village = Village::query()->whereStreetCode($street->code)->firstOrFail();
         self::assertTrue($village->street->is($street));
         self::assertSame($village->{$village->getStreetCodeName()}, $village->getStreetCode());
     }
