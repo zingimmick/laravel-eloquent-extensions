@@ -70,9 +70,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zing\\ChinaAdministrativeDivisions\\ChinaAdministrativeDivisionsServiceProvider",
                 "Zing\\LaravelEloquentImages\\EloquentImagesServiceProvider",
-                "Zing\\LaravelEloquentTags\\EloquentTagsServiceProvider"
+                "Zing\\LaravelEloquentTags\\EloquentTagsServiceProvider",
+                "Zing\\ChinaAdministrativeDivisions\\ChinaAdministrativeDivisionsServiceProvider"
             ]
         }
     },
