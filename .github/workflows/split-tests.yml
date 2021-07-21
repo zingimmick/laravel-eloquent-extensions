@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - 2.x
 
 env:
   # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
