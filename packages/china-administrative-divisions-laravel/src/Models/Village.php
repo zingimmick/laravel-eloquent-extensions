@@ -38,8 +38,11 @@ use Zing\ChinaAdministrativeDivisions\Concerns\BelongsToStreet;
 class Village extends Model
 {
     use BelongsToProvince;
+
     use BelongsToCity;
+
     use BelongsToArea;
+
     use BelongsToStreet;
 
     public $timestamps = false;
