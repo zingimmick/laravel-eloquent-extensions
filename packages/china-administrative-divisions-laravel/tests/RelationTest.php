@@ -84,9 +84,11 @@ class RelationTest extends TestCase
         self::assertTrue($province->streets()->exists());
         self::assertTrue($province->villages()->exists());
         self::assertTrue(City::query()->whereProvinceCodeNot($this->faker->randomElements())->exists());
+        self::assertTrue(City::query()->whereProvinceCodeNot(collect($this->faker->randomElements()))->exists());
         self::assertTrue(City::query()->whereProvinceCodeNot($this->faker->name)->exists());
         self::assertTrue(City::query()->whereProvinceCode($province->code)->exists());
         self::assertTrue(City::query()->whereProvinceCode([$province->code])->exists());
+        self::assertTrue(City::query()->whereProvinceCode(collect([$province->code]))->exists());
         $city = City::query()->whereProvinceCode($province->code)->firstOrFail();
         self::assertTrue($city->province->is($province));
         self::assertSame($city->{$city->getProvinceCodeName()}, $city->getProvinceCode());
@@ -95,9 +97,11 @@ class RelationTest extends TestCase
         self::assertTrue($city->streets()->exists());
         self::assertTrue($city->villages()->exists());
         self::assertTrue(Area::query()->whereCityCodeNot($this->faker->randomElements())->exists());
+        self::assertTrue(Area::query()->whereCityCodeNot(collect($this->faker->randomElements()))->exists());
         self::assertTrue(Area::query()->whereCityCodeNot($this->faker->name)->exists());
         self::assertTrue(Area::query()->whereCityCode($city->code)->exists());
         self::assertTrue(Area::query()->whereCityCode([$city->code])->exists());
+        self::assertTrue(Area::query()->whereCityCode(collect([$city->code]))->exists());
         $area = Area::query()->whereCityCode($city->code)->firstOrFail();
         self::assertTrue($area->city->is($city));
         self::assertSame($area->{$area->getCityCodeName()}, $area->getCityCode());
@@ -105,18 +109,22 @@ class RelationTest extends TestCase
         self::assertTrue($area->streets()->exists());
         self::assertTrue($area->villages()->exists());
         self::assertTrue(Street::query()->whereAreaCodeNot($this->faker->randomElements())->exists());
+        self::assertTrue(Street::query()->whereAreaCodeNot(collect($this->faker->randomElements()))->exists());
         self::assertTrue(Street::query()->whereAreaCodeNot($this->faker->name)->exists());
         self::assertTrue(Street::query()->whereAreaCode($area->code)->exists());
         self::assertTrue(Street::query()->whereAreaCode([$area->code])->exists());
+        self::assertTrue(Street::query()->whereAreaCode(collect([$area->code]))->exists());
         $street = Street::query()->whereAreaCode($area->code)->firstOrFail();
         self::assertTrue($street->area->is($area));
         self::assertSame($street->{$street->getAreaCodeName()}, $street->getAreaCode());
 
         self::assertTrue($street->villages()->exists());
         self::assertTrue(Village::query()->whereStreetCodeNot($this->faker->randomElements())->exists());
+        self::assertTrue(Village::query()->whereStreetCodeNot(collect($this->faker->randomElements()))->exists());
         self::assertTrue(Village::query()->whereStreetCodeNot($this->faker->name)->exists());
         self::assertTrue(Village::query()->whereStreetCode($street->code)->exists());
         self::assertTrue(Village::query()->whereStreetCode([$street->code])->exists());
+        self::assertTrue(Village::query()->whereStreetCode(collect([$street->code]))->exists());
         $village = Village::query()->whereStreetCode($street->code)->firstOrFail();
         self::assertTrue($village->street->is($street));
         self::assertSame($village->{$village->getStreetCodeName()}, $village->getStreetCode());
