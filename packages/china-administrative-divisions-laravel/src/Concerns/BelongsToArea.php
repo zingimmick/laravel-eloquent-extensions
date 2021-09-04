@@ -47,6 +47,7 @@ trait BelongsToArea
         if (is_array($code)) {
             return $query->whereIn($this->getQualifiedAreaCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereIn($this->getQualifiedAreaCodeName(), $code);
         }
@@ -65,6 +66,7 @@ trait BelongsToArea
         if (is_array($code)) {
             return $query->whereNotIn($this->getQualifiedAreaCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereNotIn($this->getQualifiedAreaCodeName(), $code);
         }

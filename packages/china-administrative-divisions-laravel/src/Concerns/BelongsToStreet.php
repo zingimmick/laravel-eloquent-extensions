@@ -47,6 +47,7 @@ trait BelongsToStreet
         if (is_array($code)) {
             return $query->whereIn($this->getQualifiedStreetCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereIn($this->getQualifiedStreetCodeName(), $code);
         }
@@ -65,6 +66,7 @@ trait BelongsToStreet
         if (is_array($code)) {
             return $query->whereNotIn($this->getQualifiedStreetCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereNotIn($this->getQualifiedStreetCodeName(), $code);
         }

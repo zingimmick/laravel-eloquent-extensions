@@ -47,6 +47,7 @@ trait BelongsToCity
         if (is_array($code)) {
             return $query->whereIn($this->getQualifiedCityCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereIn($this->getQualifiedCityCodeName(), $code);
         }
@@ -65,6 +66,7 @@ trait BelongsToCity
         if (is_array($code)) {
             return $query->whereNotIn($this->getQualifiedCityCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereNotIn($this->getQualifiedCityCodeName(), $code);
         }
