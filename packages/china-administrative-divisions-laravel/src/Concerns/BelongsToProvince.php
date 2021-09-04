@@ -47,6 +47,7 @@ trait BelongsToProvince
         if (is_array($code)) {
             return $query->whereIn($this->getQualifiedProvinceCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereIn($this->getQualifiedProvinceCodeName(), $code);
         }
@@ -65,6 +66,7 @@ trait BelongsToProvince
         if (is_array($code)) {
             return $query->whereNotIn($this->getQualifiedProvinceCodeName(), $code);
         }
+
         if ($code instanceof Arrayable) {
             return $query->whereNotIn($this->getQualifiedProvinceCodeName(), $code);
         }
