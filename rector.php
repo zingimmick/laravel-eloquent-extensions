@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 use Rector\CodingStyle\Rector\ClassConst\VarConstantCommentRector;
 use Rector\Core\Configuration\Option;
-use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
-use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Laravel\Set\LaravelSetList;
 use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
@@ -35,8 +33,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         [
             '*/migrations/*',
             VarConstantCommentRector::class,
-            RemoveUselessParamTagRector::class,
-            RemoveUselessReturnTagRector::class,
             RenameVariableToMatchMethodCallReturnTypeRector::class,
             RenameParamToMatchTypeRector::class,
             AddSeeTestAnnotationRector::class,
