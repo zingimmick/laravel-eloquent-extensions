@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Rector\CodingStyle\Rector\ClassConst\VarConstantCommentRector;
 use Rector\Core\Configuration\Option;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Laravel\Set\LaravelSetList;
@@ -10,7 +9,6 @@ use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
-use Rector\Privatization\Rector\Class_\ChangeReadOnlyVariableWithDefaultValueToConstantRector;
 use Rector\Privatization\Rector\Class_\FinalizeClassesWithoutChildrenRector;
 use Rector\Privatization\Rector\Class_\RepeatedLiteralToClassConstantRector;
 use Rector\Privatization\Rector\MethodCall\PrivatizeLocalGetterToPropertyRector;
@@ -32,11 +30,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         Option::SKIP,
         [
             '*/migrations/*',
-            VarConstantCommentRector::class,
             RenameVariableToMatchMethodCallReturnTypeRector::class,
             RenameParamToMatchTypeRector::class,
             AddSeeTestAnnotationRector::class,
-            ChangeReadOnlyVariableWithDefaultValueToConstantRector::class,
             FinalizeClassesWithoutChildrenRector::class,
             RepeatedLiteralToClassConstantRector::class,
             PrivatizeLocalGetterToPropertyRector::class,

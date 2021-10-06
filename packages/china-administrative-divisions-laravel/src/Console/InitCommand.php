@@ -10,21 +10,25 @@ use Zing\ChinaAdministrativeDivisions\Models\Province;
 
 class InitCommand extends Command
 {
+    /**
+     * @var string
+     */
+    private const PATH = 'pca-code.json';
+
     protected $name = 'china-administrative-divisions:init';
 
     protected $description = 'init administrative divisions of china';
 
     public function handle(): void
     {
-        $path = 'pca-code.json';
-        if (! Storage::exists($path)) {
+        if (! Storage::exists(self::PATH)) {
             $content = file_get_contents(__DIR__ . '/../../pca-code.json');
             if ($content !== false) {
-                Storage::put($path, $content);
+                Storage::put(self::PATH, $content);
             }
         }
 
-        collect(json_decode(Storage::get($path), true))->each(
+        collect(json_decode(Storage::get(self::PATH), true))->each(
             function ($item): void {
                 $province = Province::query()->updateOrCreate(
                     [
