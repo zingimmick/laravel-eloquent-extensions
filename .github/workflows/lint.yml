@@ -8,4 +8,4 @@ on:
 
 jobs:
   ecs:
-    uses: zingimmick/package-skeleton-laravel/.github/workflows/lint.yml
+    uses: zingimmick/package-skeleton-laravel/.github/workflows/lint.yml@master
