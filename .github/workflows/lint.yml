@@ -8,4 +8,4 @@ on:
 
 jobs:
   ecs:
-    uses: zingimmick/.github/.github/workflows/lint.yml@master
+    uses: zingimmick/.github/.github/workflows/lint.yml@main
