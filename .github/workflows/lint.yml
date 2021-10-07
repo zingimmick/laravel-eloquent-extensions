@@ -7,5 +7,6 @@ on:
       - master
 
 jobs:
-  ecs:
+  lint:
+    name: Lint
     uses: zingimmick/.github/.github/workflows/lint.yml@main
