@@ -1,7 +1,9 @@
 name: Auto-Merge
 on:
-  pull_request_target:
-    types: [labeled]
+  pull_request:
+  push:
+    branches:
+      - master
 
 jobs:
   enable-auto-merge:
