@@ -5,6 +5,6 @@ on:
 
 jobs:
   enable-auto-merge:
-    uses: zingimmick/.github/.github/workflows/lint.yml@reusable-workflow
+    uses: zingimmick/.github/.github/workflows/auto-merge.yml@reusable-workflow
     secrets:
       token: "${{ secrets.GITHUB_TOKEN }}"
