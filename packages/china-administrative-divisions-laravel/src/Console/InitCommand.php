@@ -15,8 +15,14 @@ class InitCommand extends Command
      */
     private const PATH = 'pca-code.json';
 
+    /**
+     * @var string
+     */
     protected $name = 'china-administrative-divisions:init';
 
+    /**
+     * @var string
+     */
     protected $description = 'init administrative divisions of china';
 
     public function handle(): void
