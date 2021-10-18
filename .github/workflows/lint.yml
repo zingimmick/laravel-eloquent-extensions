@@ -9,4 +9,4 @@ on:
 jobs:
   lint:
     name: Lint
-    uses: zingimmick/.github/.github/workflows/lint.yml@reusable-workflow
+    uses: zingimmick/.github/.github/workflows/lint.yml@main
