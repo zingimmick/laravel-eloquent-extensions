@@ -9,5 +9,5 @@ jobs:
   enable-auto-merge:
     uses: zingimmick/.github/.github/workflows/auto-merge.yml@reusable-workflow
     secrets:
-      token: ${{ secrets.ACCESS_TOKEN }}
+      token: ${{ secrets.GITHUB_TOKEN }}
 
