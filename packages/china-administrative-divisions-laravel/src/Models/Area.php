@@ -33,7 +33,6 @@ use Zing\ChinaAdministrativeDivisions\Concerns\BelongsToProvince;
 class Area extends Model
 {
     use BelongsToProvince;
-
     use BelongsToCity;
 
     /**
