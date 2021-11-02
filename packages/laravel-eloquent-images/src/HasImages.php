@@ -156,6 +156,7 @@ trait HasImages
 
     /**
      * @param \Illuminate\Database\Eloquent\Model|string|mixed $value
+     *
      * @return \Zing\LaravelEloquentImages\Image
      */
     protected static function parseImage($value): Model

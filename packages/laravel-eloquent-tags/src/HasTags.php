@@ -147,6 +147,7 @@ trait HasTags
 
     /**
      * @param \Illuminate\Database\Eloquent\Model|string|mixed $value
+     *
      * @return \Zing\LaravelEloquentTags\Tag
      */
     protected static function parseTag($value): Model
