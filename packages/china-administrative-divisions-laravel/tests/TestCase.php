@@ -21,6 +21,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'database.default' => 'testing',
         ]);
     }
+
     /**
      * @param \Illuminate\Foundation\Application $app
      * @return array<class-string<\Illuminate\Support\ServiceProvider>>
