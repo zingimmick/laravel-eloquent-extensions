@@ -2,10 +2,8 @@ includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-    level: max
+    level: 8
     paths:
         - packages
-    checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Method (.*?) should return Illuminate\\Database\\Eloquent\\Collection but returns Illuminate\\Support\\Collection<int, Illuminate\\Database\\Eloquent\\Model>.#'
-        - "#Parameter \\#1 \\$(callback|function) of function forward_static_call expects callable\\(\\): mixed, array\\(string, 'query'\\) given.#"
+        - '#Method (.*?) should return Illuminate\\Database\\Eloquent\\Collection but returns Illuminate\\Support\\Collection<(.*?)>.#'

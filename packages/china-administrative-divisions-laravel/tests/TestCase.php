@@ -22,6 +22,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
         ]);
     }
 
+    /**
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array<class-string<\Illuminate\Support\ServiceProvider>>
+     */
     protected function getPackageProviders($app)
     {
         return [ChinaAdministrativeDivisionsServiceProvider::class];

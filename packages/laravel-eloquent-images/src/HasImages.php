@@ -18,14 +18,14 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  */
 trait HasImages
 {
+    /**
+     * @return class-string<\Zing\LaravelEloquentImages\Image>
+     */
     protected static function getImageClassName(): string
     {
         return config('eloquent-images.models.image');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
     public function images(): MorphToMany
     {
         return $this->morphToMany(
@@ -39,10 +39,7 @@ trait HasImages
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param array|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
      */
     public function scopeWithAllImages(Builder $query, $images): Builder
     {
@@ -62,10 +59,7 @@ trait HasImages
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param array|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
      */
     public function scopeWithAnyImages(Builder $query, $images): Builder
     {
@@ -80,7 +74,7 @@ trait HasImages
     }
 
     /**
-     * @param array|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
      *
      * @return $this
      */
@@ -105,7 +99,7 @@ trait HasImages
     }
 
     /**
-     * @param array|\ArrayAccess $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess $images
      *
      * @return $this
      */
@@ -130,7 +124,7 @@ trait HasImages
     }
 
     /**
-     * @param array|\ArrayAccess $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess $images
      *
      * @return $this
      */
@@ -138,7 +132,7 @@ trait HasImages
     {
         $this->images()
             ->sync(static::parseImages($images)->mapWithKeys(
-                function ($image, $key) {
+                function ($image, $key): array {
                     return [
                         $image->getKey() => [
                             'priority' => $key,
@@ -151,13 +145,11 @@ trait HasImages
     }
 
     /**
-     * @param array|\ArrayAccess $values
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess $values
      */
     protected static function parseImages($values): Collection
     {
-        return Collection::make($values)->map(function ($value) {
+        return Collection::make($values)->map(function ($value): Model {
             return self::parseImage($value);
         });
     }
@@ -165,11 +157,11 @@ trait HasImages
     /**
      * @param \Illuminate\Database\Eloquent\Model|string|mixed $value
      *
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Zing\LaravelEloquentImages\Image
      */
     protected static function parseImage($value): Model
     {
-        if ($value instanceof Model) {
+        if (is_a($value, self::getImageClassName())) {
             return $value;
         }
 

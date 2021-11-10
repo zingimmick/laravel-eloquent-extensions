@@ -38,15 +38,18 @@ use Zing\ChinaAdministrativeDivisions\Concerns\BelongsToStreet;
 class Village extends Model
 {
     use BelongsToProvince;
-
     use BelongsToCity;
-
     use BelongsToArea;
-
     use BelongsToStreet;
 
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = ['code', 'name', 'province_code', 'city_code', 'area_code', 'street_code'];
 
     public function getTable()

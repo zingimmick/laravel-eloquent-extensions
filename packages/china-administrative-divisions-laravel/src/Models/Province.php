@@ -26,8 +26,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Province extends Model
 {
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = ['code', 'name'];
 
     public function getTable()
