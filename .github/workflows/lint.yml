@@ -10,3 +10,5 @@ jobs:
   lint:
     name: Lint
     uses: zingimmick/.github/.github/workflows/lint.yml@main
+    with:
+      fail-fast: false
