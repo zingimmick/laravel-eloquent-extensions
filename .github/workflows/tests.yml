@@ -11,7 +11,7 @@ on:
 jobs:
   tests:
     name: Tests
-    uses: zingimmick/.github/.github/workflows/tests-laravel.yml@tests-laravel
+    uses: zingimmick/.github/.github/workflows/tests-laravel.yml@main
     secrets:
       codecov-token: ${{ secrets.CODECOV_TOKEN }}
       cc-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
