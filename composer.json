@@ -68,6 +68,9 @@
         ]
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
         "laravel": {
             "providers": [
                 "Zing\\LaravelEloquentImages\\EloquentImagesServiceProvider",
