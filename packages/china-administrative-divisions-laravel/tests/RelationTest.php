@@ -20,7 +20,7 @@ class RelationTest extends TestCase
         $province = Province::query()->create(
             [
                 'code' => $this->faker->numberBetween(),
-                'name' => $this->faker->name,
+                'name' => $this->faker->name(),
             ]
         );
         collect(range(1, $this->faker->numberBetween(2, 5)))
@@ -29,7 +29,7 @@ class RelationTest extends TestCase
                     $city = City::query()->create(
                         [
                             'code' => $this->faker->numberBetween(),
-                            'name' => $this->faker->name,
+                            'name' => $this->faker->name(),
                             'province_code' => $province->code,
                         ]
                     );
@@ -39,7 +39,7 @@ class RelationTest extends TestCase
                                 $area = Area::query()->create(
                                     [
                                         'code' => $this->faker->numberBetween(),
-                                        'name' => $this->faker->name,
+                                        'name' => $this->faker->name(),
                                         'province_code' => $city->province_code,
                                         'city_code' => $city->code,
                                     ]
@@ -51,7 +51,7 @@ class RelationTest extends TestCase
                                             $street = Street::query()->create(
                                                 [
                                                     'code' => $this->faker->numberBetween(),
-                                                    'name' => $this->faker->name,
+                                                    'name' => $this->faker->name(),
                                                     'province_code' => $area->province_code,
                                                     'city_code' => $area->city_code,
                                                     'area_code' => $area->code,
@@ -64,7 +64,7 @@ class RelationTest extends TestCase
                                                         Village::query()->create(
                                                             [
                                                                 'code' => $this->faker->numberBetween(),
-                                                                'name' => $this->faker->name,
+                                                                'name' => $this->faker->name(),
                                                                 'province_code' => $street->province_code,
                                                                 'city_code' => $street->city_code,
                                                                 'area_code' => $street->area_code,
@@ -85,7 +85,7 @@ class RelationTest extends TestCase
         self::assertTrue($province->villages()->exists());
         self::assertTrue(City::query()->whereProvinceCodeNot($this->faker->randomElements())->exists());
         self::assertTrue(City::query()->whereProvinceCodeNot(collect($this->faker->randomElements()))->exists());
-        self::assertTrue(City::query()->whereProvinceCodeNot($this->faker->name)->exists());
+        self::assertTrue(City::query()->whereProvinceCodeNot($this->faker->name())->exists());
         self::assertTrue(City::query()->whereProvinceCode($province->code)->exists());
         self::assertTrue(City::query()->whereProvinceCode([$province->code])->exists());
         self::assertTrue(City::query()->whereProvinceCode(collect([$province->code]))->exists());
@@ -98,7 +98,7 @@ class RelationTest extends TestCase
         self::assertTrue($city->villages()->exists());
         self::assertTrue(Area::query()->whereCityCodeNot($this->faker->randomElements())->exists());
         self::assertTrue(Area::query()->whereCityCodeNot(collect($this->faker->randomElements()))->exists());
-        self::assertTrue(Area::query()->whereCityCodeNot($this->faker->name)->exists());
+        self::assertTrue(Area::query()->whereCityCodeNot($this->faker->name())->exists());
         self::assertTrue(Area::query()->whereCityCode($city->code)->exists());
         self::assertTrue(Area::query()->whereCityCode([$city->code])->exists());
         self::assertTrue(Area::query()->whereCityCode(collect([$city->code]))->exists());
@@ -110,7 +110,7 @@ class RelationTest extends TestCase
         self::assertTrue($area->villages()->exists());
         self::assertTrue(Street::query()->whereAreaCodeNot($this->faker->randomElements())->exists());
         self::assertTrue(Street::query()->whereAreaCodeNot(collect($this->faker->randomElements()))->exists());
-        self::assertTrue(Street::query()->whereAreaCodeNot($this->faker->name)->exists());
+        self::assertTrue(Street::query()->whereAreaCodeNot($this->faker->name())->exists());
         self::assertTrue(Street::query()->whereAreaCode($area->code)->exists());
         self::assertTrue(Street::query()->whereAreaCode([$area->code])->exists());
         self::assertTrue(Street::query()->whereAreaCode(collect([$area->code]))->exists());
@@ -121,7 +121,7 @@ class RelationTest extends TestCase
         self::assertTrue($street->villages()->exists());
         self::assertTrue(Village::query()->whereStreetCodeNot($this->faker->randomElements())->exists());
         self::assertTrue(Village::query()->whereStreetCodeNot(collect($this->faker->randomElements()))->exists());
-        self::assertTrue(Village::query()->whereStreetCodeNot($this->faker->name)->exists());
+        self::assertTrue(Village::query()->whereStreetCodeNot($this->faker->name())->exists());
         self::assertTrue(Village::query()->whereStreetCode($street->code)->exists());
         self::assertTrue(Village::query()->whereStreetCode([$street->code])->exists());
         self::assertTrue(Village::query()->whereStreetCode(collect([$street->code]))->exists());
