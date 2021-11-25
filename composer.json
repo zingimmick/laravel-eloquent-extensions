@@ -31,12 +31,14 @@
     "replace": {
         "zing/china-administrative-divisions-laravel": "self.version",
         "zing/laravel-eloquent-images": "self.version",
+        "zing/laravel-eloquent-relationships": "self.version",
         "zing/laravel-eloquent-tags": "self.version"
     },
     "autoload": {
         "psr-4": {
             "Zing\\ChinaAdministrativeDivisions\\": "packages/china-administrative-divisions-laravel/src",
             "Zing\\LaravelEloquentImages\\": "packages/laravel-eloquent-images/src",
+            "Zing\\LaravelEloquentRelationships\\": "packages/laravel-eloquent-relationships/src",
             "Zing\\LaravelEloquentTags\\": "packages/laravel-eloquent-tags/src"
         }
     },
@@ -44,6 +46,7 @@
         "psr-4": {
             "Zing\\ChinaAdministrativeDivisions\\Tests\\": "packages/china-administrative-divisions-laravel/tests",
             "Zing\\LaravelEloquentImages\\Tests\\": "packages/laravel-eloquent-images/tests",
+            "Zing\\LaravelEloquentRelationships\\Tests\\": "packages/laravel-eloquent-relationships/tests",
             "Zing\\LaravelEloquentTags\\Tests\\": "packages/laravel-eloquent-tags/tests"
         }
     },
