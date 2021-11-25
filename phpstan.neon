@@ -7,3 +7,4 @@ parameters:
         - packages
     ignoreErrors:
         - '#Method (.*?) should return Illuminate\\Database\\Eloquent\\Collection but returns Illuminate\\Support\\Collection<(.*?)>.#'
+        - '#Cannot access property \$pivot on (.*?)#'
