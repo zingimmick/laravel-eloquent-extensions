@@ -122,6 +122,7 @@ trait HasMoreRelationships
      *
      * @phpstan-param string $related
      * @phpstan-param string $name
+     * @phpstan-param bool $inverse
      *
      * @param mixed $related
      * @param mixed $name
@@ -130,6 +131,7 @@ trait HasMoreRelationships
      * @param string|null $relatedPivotKey
      * @param string|null $parentKey
      * @param string|null $relatedKey
+     * @param mixed $inverse
      *
      * @return \Zing\LaravelEloquentRelationships\Relations\MorphToOne
      */
@@ -141,7 +143,7 @@ trait HasMoreRelationships
         $relatedPivotKey = null,
         $parentKey = null,
         $relatedKey = null,
-        bool $inverse = false
+         $inverse = false
     ) {
         $caller = $this->guessBelongsToOneRelation();
 
