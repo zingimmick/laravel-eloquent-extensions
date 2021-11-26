@@ -16,6 +16,9 @@ class Image extends Model
 {
     use HasMoreRelationships;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = ['url'];
 
     public function bestProduct(): \Zing\LaravelEloquentRelationships\Relations\MorphToOne

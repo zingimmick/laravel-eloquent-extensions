@@ -130,7 +130,6 @@ trait HasMoreRelationships
      * @param string|null $relatedPivotKey
      * @param string|null $parentKey
      * @param string|null $relatedKey
-     * @param bool $inverse
      *
      * @return \Zing\LaravelEloquentRelationships\Relations\MorphToOne
      */
@@ -142,7 +141,7 @@ trait HasMoreRelationships
         $relatedPivotKey = null,
         $parentKey = null,
         $relatedKey = null,
-        $inverse = false
+        bool $inverse = false
     ) {
         $caller = $this->guessBelongsToOneRelation();
 
@@ -159,7 +158,7 @@ trait HasMoreRelationships
         // the relationship instances for this relation. This relations will set
         // appropriate query constraints then entirely manages the hydrations.
         if (! $table) {
-            $words = preg_split('/(_)/u', $name, -1, PREG_SPLIT_DELIM_CAPTURE);
+            $words = preg_split('#(_)#u', $name, -1, PREG_SPLIT_DELIM_CAPTURE);
 
             $lastWord = array_pop($words);
 
@@ -199,8 +198,6 @@ trait HasMoreRelationships
      * @param string|null $relationName
      * @param mixed $inverse
      * @phpstan-param bool $inverse
-     *
-     * @return \Zing\LaravelEloquentRelationships\Relations\MorphToOne
      */
     protected function newMorphToOne(
         Builder $query,
@@ -213,7 +210,7 @@ trait HasMoreRelationships
         $relatedKey,
         $relationName = null,
         $inverse = false
-    ) {
+    ): MorphToOne {
         return new MorphToOne(
             $query,
             $parent,
@@ -277,7 +274,7 @@ trait HasMoreRelationships
      */
     protected function guessBelongsToOneRelation(): ?string
     {
-        $caller = Arr::first(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), function ($trace) {
+        $caller = Arr::first(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), function ($trace): bool {
             return ! in_array(
                 $trace['function'],
                 array_merge(static::$oneMethods, ['guessBelongsToOneRelation']),

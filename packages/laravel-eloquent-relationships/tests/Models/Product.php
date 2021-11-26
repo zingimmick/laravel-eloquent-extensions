@@ -18,6 +18,9 @@ class Product extends Model
 {
     use HasMoreRelationships;
 
+    /**
+     * @var string[]
+     */
     protected $fillable = ['name'];
 
     public function leader(): BelongsToOne
