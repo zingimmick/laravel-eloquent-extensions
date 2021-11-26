@@ -143,7 +143,7 @@ trait HasMoreRelationships
         $relatedPivotKey = null,
         $parentKey = null,
         $relatedKey = null,
-         $inverse = false
+        $inverse = false
     ) {
         $caller = $this->guessBelongsToOneRelation();
 
