@@ -18,11 +18,8 @@ jobs:
 
       # required for matrix of packages set
       - uses: shivammathur/setup-php@2.16.0
-        with:
-          php-version: 7.4
-          coverage: none
 
-      - uses: "ramsey/composer-install@v1"
+      - uses: ramsey/composer-install@v1
 
       # get package json list
       - id: output_data
