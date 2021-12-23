@@ -34,11 +34,8 @@ class InitCommand extends Command
                 Storage::put(self::PATH, $content);
             }
         }
-
+/** @phpstan-var  non-empty-string $contents */
         $contents = Storage::get(self::PATH);
-        if ($contents === null) {
-            return;
-        }
 
         /** @var iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>}> $data */
         $data = json_decode($contents, true);
