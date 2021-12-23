@@ -48,44 +48,44 @@ class InitCommand extends Command
         $data = json_decode($contents, true);
         collect($data)
             ->each(
-            /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\ProvinceArray $item */
-            function ($item): void {
-                $province = Province::query()->updateOrCreate(
-                    [
-                        'code' => $item['code'],
-                    ],
-                    [
-                        'name' => $item['name'],
-                    ]
-                );
-                collect($item['children'])->each(
-                    /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\CityArray $item */
-                    function ($item) use ($province): void {
-                        $city = $province->cities()
-                            ->updateOrCreate([
-                                'code' => $item['code'],
-                            ], [
-                                'name' => $item['name'],
-                            ]);
+                /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\ProvinceArray $item */
+                function ($item): void {
+                    $province = Province::query()->updateOrCreate(
+                        [
+                            'code' => $item['code'],
+                        ],
+                        [
+                            'name' => $item['name'],
+                        ]
+                    );
+                    collect($item['children'])->each(
+                        /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\CityArray $item */
+                        function ($item) use ($province): void {
+                            $city = $province->cities()
+                                ->updateOrCreate([
+                                    'code' => $item['code'],
+                                ], [
+                                    'name' => $item['name'],
+                                ]);
 
-                        collect($item['children'])->each(
-                            /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\AreaArray $item */
-                            function ($item) use ($city): void {
-                                $city->areas()
-                                    ->updateOrCreate(
-                                        [
-                                            'code' => $item['code'],
-                                        ],
-                                        [
-                                            'name' => $item['name'],
-                                            'province_code' => $city->province_code,
-                                        ]
-                                    );
-                            }
-                        );
-                    }
-                );
-            }
+                            collect($item['children'])->each(
+                                /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\AreaArray $item */
+                                function ($item) use ($city): void {
+                                    $city->areas()
+                                        ->updateOrCreate(
+                                            [
+                                                'code' => $item['code'],
+                                            ],
+                                            [
+                                                'name' => $item['name'],
+                                                'province_code' => $city->province_code,
+                                            ]
+                                        );
+                                }
+                            );
+                        }
+                    );
+                }
             );
     }
 }
