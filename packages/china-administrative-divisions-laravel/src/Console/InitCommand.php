@@ -8,6 +8,11 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Zing\ChinaAdministrativeDivisions\Models\Province;
 
+/**
+ * @phpstan-type AreaArray array{code: string, name: string, children: null}
+ * @phpstan-type CityArray array{code: string, name: string, children: iterable<int, AreaArray>}
+ * @phpstan-type ProvinceArray array{code: string, name: string, children: iterable<int, CityArray>}
+ */
 class InitCommand extends Command
 {
     /**
@@ -33,8 +38,14 @@ class InitCommand extends Command
                 Storage::put(self::PATH, $content);
             }
         }
-
-        collect(json_decode(Storage::get(self::PATH), true))->each(
+$contents=Storage::get(self::PATH);
+        if ($contents===null){
+            return;
+        }
+        /** @var iterable<int, ProvinceArray> $data */
+        $data=json_decode($contents, true);
+        collect($data)->each(
+        /** @phpstan-param    ProvinceArray $item */
             function ($item): void {
                 $province = Province::query()->updateOrCreate(
                     [
@@ -45,6 +56,7 @@ class InitCommand extends Command
                     ]
                 );
                 collect($item['children'])->each(
+                /** @phpstan-param      CityArray $item */
                     function ($item) use ($province): void {
                         $city = $province->cities()
                             ->updateOrCreate([
@@ -54,6 +66,7 @@ class InitCommand extends Command
                             ]);
 
                         collect($item['children'])->each(
+                        /** @phpstan-param AreaArray $item */
                             function ($item) use ($city): void {
                                 $city->areas()
                                     ->updateOrCreate(
