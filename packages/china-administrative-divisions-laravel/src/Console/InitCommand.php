@@ -8,11 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Zing\ChinaAdministrativeDivisions\Models\Province;
 
-/**
- * @phpstan-type AreaArray array{code: string, name: string, children: null}
- * @phpstan-type CityArray array{code: string, name: string, children: iterable<int, \Zing\ChinaAdministrativeDivisions\Console\AreaArray>}
- * @phpstan-type ProvinceArray array{code: string, name: string, children: iterable<int, \Zing\ChinaAdministrativeDivisions\Console\CityArray>}
- */
+
 class InitCommand extends Command
 {
     /**
@@ -44,48 +40,48 @@ class InitCommand extends Command
             return;
         }
 
-        /** @var iterable<int, \Zing\ChinaAdministrativeDivisions\Console\ProvinceArray> $data */
+        /** @var iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>}> $data */
         $data = json_decode($contents, true);
         collect($data)
             ->each(
-                /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\ProvinceArray $item */
-                function ($item): void {
-                    $province = Province::query()->updateOrCreate(
-                        [
-                            'code' => $item['code'],
-                        ],
-                        [
-                            'name' => $item['name'],
-                        ]
-                    );
-                    collect($item['children'])->each(
-                        /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\CityArray $item */
-                        function ($item) use ($province): void {
-                            $city = $province->cities()
-                                ->updateOrCreate([
-                                    'code' => $item['code'],
-                                ], [
-                                    'name' => $item['name'],
-                                ]);
+            /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>} $item */
+            function ($item): void {
+                $province = Province::query()->updateOrCreate(
+                    [
+                        'code' => $item['code'],
+                    ],
+                    [
+                        'name' => $item['name'],
+                    ]
+                );
+                collect($item['children'])->each(
+                    /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>} $item */
+                    function ($item) use ($province): void {
+                        $city = $province->cities()
+                            ->updateOrCreate([
+                                'code' => $item['code'],
+                            ], [
+                                'name' => $item['name'],
+                            ]);
 
-                            collect($item['children'])->each(
-                                /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\AreaArray $item */
-                                function ($item) use ($city): void {
-                                    $city->areas()
-                                        ->updateOrCreate(
-                                            [
-                                                'code' => $item['code'],
-                                            ],
-                                            [
-                                                'name' => $item['name'],
-                                                'province_code' => $city->province_code,
-                                            ]
-                                        );
-                                }
-                            );
-                        }
-                    );
-                }
+                        collect($item['children'])->each(
+                            /** @phpstan-param array{code: string, name: string, children: null} $item */
+                            function ($item) use ($city): void {
+                                $city->areas()
+                                    ->updateOrCreate(
+                                        [
+                                            'code' => $item['code'],
+                                        ],
+                                        [
+                                            'name' => $item['name'],
+                                            'province_code' => $city->province_code,
+                                        ]
+                                    );
+                            }
+                        );
+                    }
+                );
+            }
             );
     }
 }
