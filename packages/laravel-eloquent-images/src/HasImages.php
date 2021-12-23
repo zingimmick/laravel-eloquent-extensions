@@ -39,7 +39,7 @@ trait HasImages
     }
 
     /**
-     * @param iterable<int, \Zing\LaravelEloquentImages\Image|string>|\Illuminate\Contracts\Support\Arrayable<int, \Zing\LaravelEloquentImages\Image|string>|\Zing\LaravelEloquentImages\Image $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
      */
     public function scopeWithAllImages(Builder $query, $images): Builder
     {
@@ -59,7 +59,7 @@ trait HasImages
     }
 
     /**
-     * @param iterable<int, \Zing\LaravelEloquentImages\Image|string>|\Illuminate\Contracts\Support\Arrayable<int, \Zing\LaravelEloquentImages\Image|string>|\Zing\LaravelEloquentImages\Image $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
      */
     public function scopeWithAnyImages(Builder $query, $images): Builder
     {
@@ -74,7 +74,7 @@ trait HasImages
     }
 
     /**
-     * @param iterable<int, \Zing\LaravelEloquentImages\Image|string>|\Illuminate\Contracts\Support\Arrayable<int, \Zing\LaravelEloquentImages\Image|string>|\Zing\LaravelEloquentImages\Image $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess|\Zing\LaravelEloquentImages\Image $images
      *
      * @return $this
      */
@@ -99,7 +99,7 @@ trait HasImages
     }
 
     /**
-     * @param iterable<int, \Zing\LaravelEloquentImages\Image|string>|\Illuminate\Contracts\Support\Arrayable<int, \Zing\LaravelEloquentImages\Image|string> $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess $images
      *
      * @return $this
      */
@@ -124,7 +124,7 @@ trait HasImages
     }
 
     /**
-     * @param iterable<int, \Zing\LaravelEloquentImages\Image|string>|\Illuminate\Contracts\Support\Arrayable<int, \Zing\LaravelEloquentImages\Image|string> $images
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess $images
      *
      * @return $this
      */
@@ -145,7 +145,7 @@ trait HasImages
     }
 
     /**
-     * @param iterable<int, \Zing\LaravelEloquentImages\Image|string>|\Illuminate\Contracts\Support\Arrayable<int, \Zing\LaravelEloquentImages\Image|string> $values
+     * @param array<\Zing\LaravelEloquentImages\Image|string>|\ArrayAccess $values
      */
     protected static function parseImages($values): Collection
     {

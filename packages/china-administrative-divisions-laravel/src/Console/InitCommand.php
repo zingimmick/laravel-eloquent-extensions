@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Zing\ChinaAdministrativeDivisions\Models\Province;
 
+
 class InitCommand extends Command
 {
     /**
@@ -33,52 +34,51 @@ class InitCommand extends Command
                 Storage::put(self::PATH, $content);
             }
         }
-
-        /** @phpstan-var non-empty-string $contents */
+/** @phpstan-var  non-empty-string $contents */
         $contents = Storage::get(self::PATH);
 
         /** @var iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>}> $data */
         $data = json_decode($contents, true);
         collect($data)
             ->each(
-                /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>} $item */
-                function ($item): void {
-                    $province = Province::query()->updateOrCreate(
-                        [
-                            'code' => $item['code'],
-                        ],
-                        [
-                            'name' => $item['name'],
-                        ]
-                    );
-                    collect($item['children'])->each(
-                        /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>} $item */
-                        function ($item) use ($province): void {
-                            $city = $province->cities()
-                                ->updateOrCreate([
-                                    'code' => $item['code'],
-                                ], [
-                                    'name' => $item['name'],
-                                ]);
+            /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>} $item */
+            function ($item): void {
+                $province = Province::query()->updateOrCreate(
+                    [
+                        'code' => $item['code'],
+                    ],
+                    [
+                        'name' => $item['name'],
+                    ]
+                );
+                collect($item['children'])->each(
+                    /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>} $item */
+                    function ($item) use ($province): void {
+                        $city = $province->cities()
+                            ->updateOrCreate([
+                                'code' => $item['code'],
+                            ], [
+                                'name' => $item['name'],
+                            ]);
 
-                            collect($item['children'])->each(
-                                /** @phpstan-param array{code: string, name: string, children: null} $item */
-                                function ($item) use ($city): void {
-                                    $city->areas()
-                                        ->updateOrCreate(
-                                            [
-                                                'code' => $item['code'],
-                                            ],
-                                            [
-                                                'name' => $item['name'],
-                                                'province_code' => $city->province_code,
-                                            ]
-                                        );
-                                }
-                            );
-                        }
-                    );
-                }
+                        collect($item['children'])->each(
+                            /** @phpstan-param array{code: string, name: string, children: null} $item */
+                            function ($item) use ($city): void {
+                                $city->areas()
+                                    ->updateOrCreate(
+                                        [
+                                            'code' => $item['code'],
+                                        ],
+                                        [
+                                            'name' => $item['name'],
+                                            'province_code' => $city->province_code,
+                                        ]
+                                    );
+                            }
+                        );
+                    }
+                );
+            }
             );
     }
 }
