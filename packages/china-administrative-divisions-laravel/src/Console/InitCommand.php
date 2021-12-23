@@ -34,42 +34,51 @@ class InitCommand extends Command
             }
         }
 
-        collect(json_decode(Storage::get(self::PATH), true))->each(
-            function ($item): void {
-                $province = Province::query()->updateOrCreate(
-                    [
-                        'code' => $item['code'],
-                    ],
-                    [
-                        'name' => $item['name'],
-                    ]
-                );
-                collect($item['children'])->each(
-                    function ($item) use ($province): void {
-                        $city = $province->cities()
-                            ->updateOrCreate([
-                                'code' => $item['code'],
-                            ], [
-                                'name' => $item['name'],
-                            ]);
+        /** @phpstan-var non-empty-string $contents */
+        $contents = Storage::get(self::PATH);
 
-                        collect($item['children'])->each(
-                            function ($item) use ($city): void {
-                                $city->areas()
-                                    ->updateOrCreate(
-                                        [
-                                            'code' => $item['code'],
-                                        ],
-                                        [
-                                            'name' => $item['name'],
-                                            'province_code' => $city->province_code,
-                                        ]
-                                    );
-                            }
-                        );
-                    }
-                );
-            }
-        );
+        /** @var iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>}> $data */
+        $data = json_decode($contents, true);
+        collect($data)
+            ->each(
+                /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>} $item */
+                function ($item): void {
+                    $province = Province::query()->updateOrCreate(
+                        [
+                            'code' => $item['code'],
+                        ],
+                        [
+                            'name' => $item['name'],
+                        ]
+                    );
+                    collect($item['children'])->each(
+                        /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>} $item */
+                        function ($item) use ($province): void {
+                            $city = $province->cities()
+                                ->updateOrCreate([
+                                    'code' => $item['code'],
+                                ], [
+                                    'name' => $item['name'],
+                                ]);
+
+                            collect($item['children'])->each(
+                                /** @phpstan-param array{code: string, name: string, children: null} $item */
+                                function ($item) use ($city): void {
+                                    $city->areas()
+                                        ->updateOrCreate(
+                                            [
+                                                'code' => $item['code'],
+                                            ],
+                                            [
+                                                'name' => $item['name'],
+                                                'province_code' => $city->province_code,
+                                            ]
+                                        );
+                                }
+                            );
+                        }
+                    );
+                }
+            );
     }
 }
