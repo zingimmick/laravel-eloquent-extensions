@@ -10,8 +10,8 @@ use Zing\ChinaAdministrativeDivisions\Models\Province;
 
 /**
  * @phpstan-type AreaArray array{code: string, name: string, children: null}
- * @phpstan-type CityArray array{code: string, name: string, children: iterable<int, AreaArray>}
- * @phpstan-type ProvinceArray array{code: string, name: string, children: iterable<int, CityArray>}
+ * @phpstan-type CityArray array{code: string, name: string, children: iterable<int, \Zing\ChinaAdministrativeDivisions\Console\AreaArray>}
+ * @phpstan-type ProvinceArray array{code: string, name: string, children: iterable<int, \Zing\ChinaAdministrativeDivisions\Console\CityArray>}
  */
 class InitCommand extends Command
 {
@@ -38,14 +38,17 @@ class InitCommand extends Command
                 Storage::put(self::PATH, $content);
             }
         }
-$contents=Storage::get(self::PATH);
-        if ($contents===null){
+
+        $contents = Storage::get(self::PATH);
+        if ($contents === null) {
             return;
         }
-        /** @var iterable<int, ProvinceArray> $data */
-        $data=json_decode($contents, true);
-        collect($data)->each(
-        /** @phpstan-param    ProvinceArray $item */
+
+        /** @var iterable<int, \Zing\ChinaAdministrativeDivisions\Console\ProvinceArray> $data */
+        $data = json_decode($contents, true);
+        collect($data)
+            ->each(
+            /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\ProvinceArray $item */
             function ($item): void {
                 $province = Province::query()->updateOrCreate(
                     [
@@ -56,7 +59,7 @@ $contents=Storage::get(self::PATH);
                     ]
                 );
                 collect($item['children'])->each(
-                /** @phpstan-param      CityArray $item */
+                    /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\CityArray $item */
                     function ($item) use ($province): void {
                         $city = $province->cities()
                             ->updateOrCreate([
@@ -66,7 +69,7 @@ $contents=Storage::get(self::PATH);
                             ]);
 
                         collect($item['children'])->each(
-                        /** @phpstan-param AreaArray $item */
+                            /** @phpstan-param \Zing\ChinaAdministrativeDivisions\Console\AreaArray $item */
                             function ($item) use ($city): void {
                                 $city->areas()
                                     ->updateOrCreate(
@@ -83,6 +86,6 @@ $contents=Storage::get(self::PATH);
                     }
                 );
             }
-        );
+            );
     }
 }
