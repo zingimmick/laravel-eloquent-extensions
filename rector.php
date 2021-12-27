@@ -23,7 +23,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(
         Option::SKIP,
         [
-            '*/migrations/*',
             RenameVariableToMatchMethodCallReturnTypeRector::class,
             RenameParamToMatchTypeRector::class,
             AddSeeTestAnnotationRector::class,
