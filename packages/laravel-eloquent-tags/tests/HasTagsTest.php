@@ -40,7 +40,7 @@ use Zing\LaravelEloquentTags\Tests\Models\Product;
      }
 
      /**
-      * @return \Iterator<array<class-string<\Zing\LaravelEloquentTags\Tag>>|array|<|class-string|<|\Zing\LaravelEloquentTags\Tests\Models\CustomTag>>>
+      * @return \Iterator<array{class-string<\Zing\LaravelEloquentTags\Tag>}|array{class-string<\Zing\LaravelEloquentTags\Tests\Models\CustomTag>}>
       */
      public function provideClasses(): iterable
      {
