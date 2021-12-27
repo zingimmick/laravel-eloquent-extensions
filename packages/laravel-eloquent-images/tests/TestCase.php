@@ -11,6 +11,23 @@ use Zing\LaravelEloquentImages\EloquentImagesServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
+    /**
+     * @before
+     */
+    protected function setUpDatabaseMigrations(): void
+    {
+        $this->afterApplicationCreated(function (): void {
+            $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+            Schema::create(
+                'products',
+                function (Blueprint $table): void {
+                    $table->bigIncrements('id');
+                    $table->timestamps();
+                }
+            );
+        });
+    }
+
     protected function getEnvironmentSetUp($app): void
     {
         config([
@@ -26,17 +43,5 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app): array
     {
         return [EloquentImagesServiceProvider::class];
-    }
-
-    protected function defineDatabaseMigrations(): void
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
-        Schema::create(
-            'products',
-            function (Blueprint $table): void {
-                $table->bigIncrements('id');
-                $table->timestamps();
-            }
-        );
     }
 }

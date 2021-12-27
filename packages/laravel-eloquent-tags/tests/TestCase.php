@@ -11,16 +11,21 @@ use Zing\LaravelEloquentTags\EloquentTagsServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
-    protected function defineDatabaseMigrations(): void
+    /**
+     * @before
+     */
+    protected function setUpDatabaseMigrations(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
-        Schema::create(
-            'products',
-            function (Blueprint $table): void {
-                $table->bigIncrements('id');
-                $table->timestamps();
-            }
-        );
+        $this->afterApplicationCreated(function (): void {
+            $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+            Schema::create(
+                'products',
+                function (Blueprint $table): void {
+                    $table->bigIncrements('id');
+                    $table->timestamps();
+                }
+            );
+        });
     }
 
     protected function getEnvironmentSetUp($app): void
