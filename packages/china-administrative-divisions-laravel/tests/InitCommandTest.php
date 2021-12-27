@@ -10,7 +10,10 @@ use Zing\ChinaAdministrativeDivisions\Models\Area;
 use Zing\ChinaAdministrativeDivisions\Models\City;
 use Zing\ChinaAdministrativeDivisions\Models\Province;
 
-class InitCommandTest extends TestCase
+/**
+ * @internal
+ */
+final class InitCommandTest extends TestCase
 {
     public function testHandle(): void
     {

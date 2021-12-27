@@ -6,7 +6,7 @@ namespace Zing\ChinaAdministrativeDivisions\Tests;
 
 use Zing\ChinaAdministrativeDivisions\ChinaAdministrativeDivisionsServiceProvider;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     protected function setUp(): void
     {
@@ -27,7 +27,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      *
      * @return array<class-string<\Illuminate\Support\ServiceProvider>>
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [ChinaAdministrativeDivisionsServiceProvider::class];
     }
