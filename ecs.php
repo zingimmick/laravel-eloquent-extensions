@@ -23,6 +23,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             YodaStyleFixer::class => null,
             PhpUnitInternalClassFixer::class,
             PhpUnitTestClassRequiresCoversFixer::class,
+            // Will be removed in a future major version.
+            \SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff::class,
         ]
     );
     $parameters->set(
