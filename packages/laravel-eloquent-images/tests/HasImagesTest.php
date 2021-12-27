@@ -39,6 +39,9 @@ final class HasImagesTest extends TestCase
         });
     }
 
+    /**
+     * @return \Iterator<array<class-string<\Zing\LaravelEloquentImages\Image>>|array|<|class-string|<|\Zing\LaravelEloquentImages\Tests\Models\CustomImage>>>
+     */
     public function provideClasses(): iterable
     {
         yield [Image::class];
@@ -48,7 +51,7 @@ final class HasImagesTest extends TestCase
     /**
      * @var \Zing\LaravelEloquentImages\Tests\Models\Product
      */
-    protected $product;
+    private $product;
 
     /**
      * @dataProvider provideClasses

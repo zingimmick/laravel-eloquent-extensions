@@ -39,6 +39,9 @@ use Zing\LaravelEloquentTags\Tests\Models\Product;
          });
      }
 
+     /**
+      * @return \Iterator<array<class-string<\Zing\LaravelEloquentTags\Tag>>|array|<|class-string|<|\Zing\LaravelEloquentTags\Tests\Models\CustomTag>>>
+      */
      public function provideClasses(): iterable
      {
          yield [Tag::class];
@@ -48,7 +51,7 @@ use Zing\LaravelEloquentTags\Tests\Models\Product;
      /**
       * @var \Zing\LaravelEloquentTags\Tests\Models\Product
       */
-     protected $product;
+     private $product;
 
      /**
       * @dataProvider provideClasses
