@@ -11,7 +11,10 @@ use Zing\ChinaAdministrativeDivisions\Models\Province;
 use Zing\ChinaAdministrativeDivisions\Models\Street;
 use Zing\ChinaAdministrativeDivisions\Models\Village;
 
-class RelationTest extends TestCase
+/**
+ * @internal
+ */
+final class RelationTest extends TestCase
 {
     use WithFaker;
 

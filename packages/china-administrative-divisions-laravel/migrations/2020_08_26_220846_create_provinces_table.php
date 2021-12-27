@@ -10,8 +10,6 @@ class CreateProvincesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -19,16 +17,18 @@ class CreateProvincesTable extends Migration
             config('china-administrative-divisions.table_names.provinces'),
             function (Blueprint $table): void {
                 $table->bigIncrements('id');
-                $table->string('code')->unique()->comment('编码');
-                $table->string('name')->default('')->comment('名称');
+                $table->string('code')
+                    ->unique()
+                    ->comment('编码');
+                $table->string('name')
+                    ->default('')
+                    ->comment('名称');
             }
         );
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

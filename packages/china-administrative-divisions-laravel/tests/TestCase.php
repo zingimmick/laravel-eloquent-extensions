@@ -6,7 +6,7 @@ namespace Zing\ChinaAdministrativeDivisions\Tests;
 
 use Zing\ChinaAdministrativeDivisions\ChinaAdministrativeDivisionsServiceProvider;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     protected function setUp(): void
     {

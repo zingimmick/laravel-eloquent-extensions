@@ -9,12 +9,10 @@ use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Zing\LaravelEloquentTags\EloquentTagsServiceProvider;
 
-class TestCase extends BaseTestCase
+abstract class TestCase extends BaseTestCase
 {
-    protected function setUp(): void
+    protected function defineDatabaseMigrations(): void
     {
-        parent::setUp();
-
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
         Schema::create(
             'products',

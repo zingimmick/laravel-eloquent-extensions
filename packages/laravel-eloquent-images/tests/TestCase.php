@@ -9,22 +9,8 @@ use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Zing\LaravelEloquentImages\EloquentImagesServiceProvider;
 
-class TestCase extends BaseTestCase
+abstract class TestCase extends BaseTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
-        Schema::create(
-            'products',
-            function (Blueprint $table): void {
-                $table->bigIncrements('id');
-                $table->timestamps();
-            }
-        );
-    }
-
     protected function getEnvironmentSetUp($app): void
     {
         config([
@@ -40,5 +26,17 @@ class TestCase extends BaseTestCase
     protected function getPackageProviders($app): array
     {
         return [EloquentImagesServiceProvider::class];
+    }
+
+    protected function defineDatabaseMigrations(): void
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+        Schema::create(
+            'products',
+            function (Blueprint $table): void {
+                $table->bigIncrements('id');
+                $table->timestamps();
+            }
+        );
     }
 }
