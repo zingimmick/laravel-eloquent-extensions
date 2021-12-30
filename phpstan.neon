@@ -9,3 +9,5 @@ parameters:
         - '#Method (.*?) should return Illuminate\\Database\\Eloquent\\Collection but returns Illuminate\\Support\\Collection<(.*?)>.#'
         - '#Cannot access property \$pivot on (.*?)#'
         - '#Parameter \#1 \$(.*?) of function array_pop expects array, array<int, string>\|false given.#'
+        - message: '#Method (.*?)::images\(\) should return Illuminate\\Database\\Eloquent\\Relations\\MorphToMany<Zing\\LaravelEloquentImages\\Image> but returns Illuminate\\Database\\Eloquent\\Relations\\MorphToMany<Illuminate\\Database\\Eloquent\\Model>.#'
+          path: packages/laravel-eloquent-images/src/HasImages.php
