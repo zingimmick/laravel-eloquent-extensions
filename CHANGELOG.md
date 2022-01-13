@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 1.6.0 - 2022-01-13
+
+## What's Changed
+
+- Support Laravel 9 for mono repo by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/42
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/1.5.0...1.6.0
+
 ## 1.5.0 - 2022-01-13
 
 ## What's Changed
