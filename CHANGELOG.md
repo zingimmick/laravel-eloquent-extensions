@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 1.5.0 - 2022-01-13
+
+## What's Changed
+
+- Update license copyright year(s) by @github-actions in https://github.com/zingimmick/laravel-eloquent-extensions/pull/40
+- Simplify ECS skip option by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/41
+- Support for Laravel 9 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/35
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/1.4.1...1.5.0
+
 ## 1.4.1 - 2021-12-30
 
 ## What's Changed
