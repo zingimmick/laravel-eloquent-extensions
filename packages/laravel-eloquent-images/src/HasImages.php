@@ -26,9 +26,6 @@ trait HasImages
         return config('eloquent-images.models.image');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany<\Zing\LaravelEloquentImages\Image>
-     */
     public function images(): MorphToMany
     {
         return $this->morphToMany(
