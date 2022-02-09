@@ -7,5 +7,3 @@ parameters:
         - packages
     ignoreErrors:
         - '#Method (.*?) should return Illuminate\\Database\\Eloquent\\Collection but returns Illuminate\\Support\\Collection<(.*?)>.#'
-        - message: '#Method (.*?)::images\(\) should return Illuminate\\Database\\Eloquent\\Relations\\MorphToMany<Zing\\LaravelEloquentImages\\Image> but returns Illuminate\\Database\\Eloquent\\Relations\\MorphToMany<Illuminate\\Database\\Eloquent\\Model>.#'
-          path: packages/laravel-eloquent-images/src/HasImages.php
