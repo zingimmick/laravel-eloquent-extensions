@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 1.7.0 - 2022-02-21
+
+## What's Changed
+
+- Bump EndBug/add-and-commit from 7.5.0 to 8 by @dependabot in https://github.com/zingimmick/laravel-eloquent-extensions/pull/43
+- Split relationships to separate repo by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/45
+- Update zing/coding-standard requirement from ^5.2 to ^5.2 || ^6.0 by @dependabot in https://github.com/zingimmick/laravel-eloquent-extensions/pull/44
+- Bump shivammathur/setup-php from 2.16.0 to 2.17.0 by @dependabot in https://github.com/zingimmick/laravel-eloquent-extensions/pull/46
+- Bump zing/coding-standard to ^6.1 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/47
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/1.6.0...1.7.0
+
 ## 1.6.0 - 2022-01-13
 
 ## What's Changed
