@@ -35,9 +35,9 @@ use Zing\ChinaAdministrativeDivisions\Concerns\BelongsToProvince;
  */
 class Street extends Model
 {
-    use BelongsToProvince;
-    use BelongsToCity;
     use BelongsToArea;
+    use BelongsToCity;
+    use BelongsToProvince;
 
     /**
      * @var bool

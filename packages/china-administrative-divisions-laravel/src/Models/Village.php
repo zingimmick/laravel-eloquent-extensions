@@ -37,9 +37,9 @@ use Zing\ChinaAdministrativeDivisions\Concerns\BelongsToStreet;
  */
 class Village extends Model
 {
-    use BelongsToProvince;
-    use BelongsToCity;
     use BelongsToArea;
+    use BelongsToCity;
+    use BelongsToProvince;
     use BelongsToStreet;
 
     /**
