@@ -44,7 +44,7 @@ trait BelongsToStreet
      */
     public function scopeWhereStreetCode($query, $code)
     {
-        if (is_array($code)) {
+        if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedStreetCodeName(), $code);
         }
 
@@ -63,7 +63,7 @@ trait BelongsToStreet
      */
     public function scopeWhereStreetCodeNot($query, $code)
     {
-        if (is_array($code)) {
+        if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedStreetCodeName(), $code);
         }
 

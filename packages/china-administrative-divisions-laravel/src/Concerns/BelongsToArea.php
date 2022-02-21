@@ -44,7 +44,7 @@ trait BelongsToArea
      */
     public function scopeWhereAreaCode($query, $code)
     {
-        if (is_array($code)) {
+        if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedAreaCodeName(), $code);
         }
 
@@ -63,7 +63,7 @@ trait BelongsToArea
      */
     public function scopeWhereAreaCodeNot($query, $code)
     {
-        if (is_array($code)) {
+        if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedAreaCodeName(), $code);
         }
 
