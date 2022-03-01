@@ -15,7 +15,7 @@ jobs:
     # see json juggling: https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
 
       - uses: shivammathur/setup-php@2.17.0
 
@@ -41,7 +41,7 @@ jobs:
     name: Split Tests of ${{ matrix.package }}
 
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
 
       - uses: shivammathur/setup-php@2.17.0
 
