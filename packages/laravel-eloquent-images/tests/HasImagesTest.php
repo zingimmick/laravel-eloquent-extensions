@@ -14,15 +14,11 @@ use Zing\LaravelEloquentImages\Tests\Models\Product;
  */
 final class HasImagesTest extends TestCase
 {
-    /**
-     * @before
-     */
-    public function setUpProduct(): void
-    {
-        $this->afterApplicationCreated(function (): void {
-            $this->product = Product::query()->create();
-        });
-    }
+protected function setUp(): void
+{
+    parent::setUp();
+    $this->product = Product::query()->create();
+}
 
     /**
      * @before
