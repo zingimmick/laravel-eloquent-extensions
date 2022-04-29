@@ -20,6 +20,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(LevelSetList::UP_TO_PHP_72);
 
     $parameters = $containerConfigurator->parameters();
+    $parameters->set(Option::PHPSTAN_FOR_RECTOR_PATH, __DIR__ . '/phpstan.neon');
     $parameters->set(
         Option::SKIP,
         [
