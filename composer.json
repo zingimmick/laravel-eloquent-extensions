@@ -31,7 +31,7 @@
         "phpstan/phpstan-phpunit": "^1.1",
         "phpunit/phpunit": "^8.0,<8.5.12 || ^9.3.3",
         "symplify/monorepo-builder": "^8.3 || ^9.2 || ^10.0",
-        "zing/coding-standard": "^6.1"
+        "zing/coding-standard": "^6.4"
     },
     "replace": {
         "zing/china-administrative-divisions-laravel": "self.version",
