@@ -3,6 +3,11 @@
     "description": "Mono repository for all Laravel eloquent extensions",
     "keywords": ["laravel", "eloquent", "extensions"],
     "license": "MIT",
+    "homepage": "https://github.com/zingimmick/laravel-eloquent-extensions",
+    "support": {
+        "issues": "https://github.com/zingimmick/laravel-eloquent-extensions/issues",
+        "source": "https://github.com/zingimmick/laravel-eloquent-extensions"
+    },
     "authors": [
         {
             "name": "zingimmick",

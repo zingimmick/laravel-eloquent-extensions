@@ -3,6 +3,11 @@
     "description": "Administrative divisions of China for Laravel",
     "keywords": ["china", "administrative-divisions", "laravel"],
     "license": "MIT",
+    "homepage": "https://github.com/zingimmick/china-administrative-divisions-laravel",
+    "support": {
+        "issues": "https://github.com/zingimmick/china-administrative-divisions-laravel/issues",
+        "source": "https://github.com/zingimmick/china-administrative-divisions-laravel"
+    },
     "authors": [
         {
             "name": "zingimmick",
