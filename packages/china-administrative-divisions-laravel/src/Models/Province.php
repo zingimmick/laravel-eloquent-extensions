@@ -36,7 +36,7 @@ class Province extends Model
      */
     protected $fillable = ['code', 'name'];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('china-administrative-divisions.table_names.provinces', parent::getTable());
     }

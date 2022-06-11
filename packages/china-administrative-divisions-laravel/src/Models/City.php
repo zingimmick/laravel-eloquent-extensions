@@ -41,7 +41,7 @@ class City extends Model
      */
     protected $fillable = ['code', 'name', 'province_code'];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('china-administrative-divisions.table_names.cities', parent::getTable());
     }
