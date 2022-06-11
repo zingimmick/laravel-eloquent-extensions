@@ -49,7 +49,7 @@ class Street extends Model
      */
     protected $fillable = ['code', 'name', 'province_code', 'city_code', 'area_code'];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('china-administrative-divisions.table_names.streets', parent::getTable());
     }

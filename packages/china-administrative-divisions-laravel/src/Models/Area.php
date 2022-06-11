@@ -45,7 +45,7 @@ class Area extends Model
      */
     protected $fillable = ['code', 'name', 'province_code', 'city_code'];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('china-administrative-divisions.table_names.areas', parent::getTable());
     }
