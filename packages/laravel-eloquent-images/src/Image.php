@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Image extends Model
 {
-    public function getTable():string
+    public function getTable(): string
     {
         return config('eloquent-images.table_names.images', parent::getTable());
     }
