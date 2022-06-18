@@ -2,28 +2,30 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\MonorepoBuilder\ValueObject\Option;
+use Symplify\MonorepoBuilder\Config\MBConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
+return static function (MBConfig $config): void {
 
-    $parameters->set(Option::PACKAGE_DIRECTORIES, [__DIR__ . '/packages']);
+    $config->packageDirectories([__DIR__ . '/packages']);
 
-    $parameters->set(
-        Option::DATA_TO_APPEND,
+    $config->dataToAppend(
         [
+            "support" => [
+                "issues" => "https://github.com/zingimmick/laravel-eloquent-extensions/issues",
+                "source" => "https://github.com/zingimmick/laravel-eloquent-extensions",
+            ],
             'authors' => [
                 [
                     'name' => 'zingimmick',
                     'email' => 'zingimmick@outlook.com',
+                    "homepage" => "https://github.com/zingimmick",
                 ],
             ],
             'require' => [
                 'php' => '^7.2 || ^8.0',
             ],
             'require-dev' => [
-                'symplify/monorepo-builder' => '^8.3 || ^9.2 || ^10.0',
+                'symplify/monorepo-builder' => '^11.0',
             ],
             'config' => [
                 'sort-packages' => true,
