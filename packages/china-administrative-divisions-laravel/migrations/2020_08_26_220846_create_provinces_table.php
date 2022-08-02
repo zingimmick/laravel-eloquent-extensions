@@ -15,7 +15,7 @@ class CreateProvincesTable extends Migration
     {
         Schema::create(
             config('china-administrative-divisions.table_names.provinces'),
-            function (Blueprint $table): void {
+            static function (Blueprint $table): void {
                 $table->bigIncrements('id');
                 $table->string('code')
                     ->unique()
