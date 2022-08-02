@@ -42,7 +42,7 @@ class InitCommand extends Command
         collect($data)
             ->each(
                 /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>} $item */
-                function ($item): void {
+                static function ($item): void {
                     $province = Province::query()->updateOrCreate(
                         [
                             'code' => $item['code'],
@@ -53,17 +53,16 @@ class InitCommand extends Command
                     );
                     collect($item['children'])->each(
                         /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>} $item */
-                        function ($item) use ($province): void {
+                        static function ($item) use ($province): void {
                             $city = $province->cities()
                                 ->updateOrCreate([
                                     'code' => $item['code'],
                                 ], [
                                     'name' => $item['name'],
                                 ]);
-
                             collect($item['children'])->each(
                                 /** @phpstan-param array{code: string, name: string, children: null} $item */
-                                function ($item) use ($city): void {
+                                static function ($item) use ($city): void {
                                     $city->areas()
                                         ->updateOrCreate(
                                             [
