@@ -23,7 +23,7 @@ trait HasImages
      */
     protected static function getImageClassName(): string
     {
-        return config('eloquent-images.models.image');
+        return config('eloquent-images.models.image') ;
     }
 
     public function images(): MorphToMany
