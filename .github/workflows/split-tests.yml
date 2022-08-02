@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: shivammathur/setup-php@2.21.0
+      - uses: shivammathur/setup-php@2.21.1
 
       - uses: ramsey/composer-install@v1
 
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: shivammathur/setup-php@2.21.0
+      - uses: shivammathur/setup-php@2.21.1
 
       - uses: ramsey/composer-install@v1
 
