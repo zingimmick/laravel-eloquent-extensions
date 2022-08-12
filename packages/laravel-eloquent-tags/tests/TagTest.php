@@ -14,7 +14,7 @@ final class TagTest extends TestCase
 {
     use WithFaker;
 
-    public function testFillable() : void
+    public function testFillable(): void
     {
         $name = $this->faker->name();
         Tag::query()->create([
