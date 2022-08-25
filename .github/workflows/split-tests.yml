@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - '[0-9]+.x'
 
 env:
   # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
