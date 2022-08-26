@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/zing/china-administrative-divisions-laravel"><img src="https://poser.pugx.org/zing/china-administrative-divisions-laravel/license" alt="License"></a>
 </p>
 
-> **Requires [PHP 7.2.0+](https://php.net/releases/)**
+> **Requires [PHP 7.3.0+](https://php.net/releases/)**
 
 Require China Administrative Divisions Laravel using [Composer](https://getcomposer.org):
 

@@ -38,7 +38,7 @@ class InitCommand extends Command
         $contents = Storage::get(self::PATH);
 
         /** @var iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>}> $data */
-        $data = json_decode($contents, true);
+        $data = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
         collect($data)
             ->each(
                 /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>}>} $item */
