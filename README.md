@@ -1,7 +1,7 @@
 # Laravel Eloquent Extensions
 
-[![Tests](https://github.com/zingimmick/laravel-eloquent-extensions/actions/workflows/tests.yml/badge.svg?branch=2.x)](https://github.com/zingimmick/laravel-eloquent-extensions/actions/workflows/tests.yml)
-[![Code Coverage](https://codecov.io/gh/zingimmick/laravel-eloquent-extensions/branch/2.x/graph/badge.svg)](https://codecov.io/gh/zingimmick/laravel-eloquent-extensions)
+[![Tests](https://github.com/zingimmick/laravel-eloquent-extensions/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/zingimmick/laravel-eloquent-extensions/actions/workflows/tests.yml)
+[![Code Coverage](https://codecov.io/gh/zingimmick/laravel-eloquent-extensions/branch/master/graph/badge.svg)](https://codecov.io/gh/zingimmick/laravel-eloquent-extensions)
 [![Latest Stable Version](https://poser.pugx.org/zing/laravel-eloquent-extensions/v/stable.svg)](https://packagist.org/packages/zing/laravel-eloquent-extensions)
 [![Total Downloads](https://poser.pugx.org/zing/laravel-eloquent-extensions/downloads)](https://packagist.org/packages/zing/laravel-eloquent-extensions)
 [![Latest Unstable Version](https://poser.pugx.org/zing/laravel-eloquent-extensions/v/unstable.svg)](https://packagist.org/packages/zing/laravel-eloquent-extensions)
