@@ -8,6 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 2.0.0 - 2022-08-29
+
+<!-- Release notes generated using configuration in .github/release.yml at 2.x -->
+### What's Changed
+
+#### Other Changes
+
+- Add homepage for authors by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/53
+- Calling a reusable workflow for update-changelog by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/54
+- Add support for new ECSConfig and RectorConfig class by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/55
+- Use ESCConfig instead of parameters by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/56
+- Changes Closure to be static when possible by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/65
+- Fix coding style by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/66
+- Fix tests action by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/68
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/1.7.0...2.0.0
+
 ## 1.7.0 - 2022-02-21
 
 ## What's Changed
