@@ -21,7 +21,7 @@ return static function (MBConfig $config): void {
                 ],
             ],
             'require' => [
-                'php' => '^7.2 || ^8.0',
+                'php' => '^7.3 || ^8.0',
             ],
             'require-dev' => [
                 'symplify/monorepo-builder' => '^11.0',
