@@ -37,13 +37,12 @@ trait BelongsToArea
     }
 
     /**
-     * @param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
-     * @param mixed $code
-     *
-     * @return static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     * @phpstan-param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
      */
-    public function scopeWhereAreaCode($query, $code)
-    {
+    public function scopeWhereAreaCode(
+        mixed $query,
+        mixed $code
+    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
         if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedAreaCodeName(), $code);
         }
@@ -56,13 +55,12 @@ trait BelongsToArea
     }
 
     /**
-     * @param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
-     * @param mixed $code
-     *
-     * @return static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     * @phpstan-param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
      */
-    public function scopeWhereAreaCodeNot($query, $code)
-    {
+    public function scopeWhereAreaCodeNot(
+        mixed $query,
+        mixed $code
+    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
         if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedAreaCodeName(), $code);
         }

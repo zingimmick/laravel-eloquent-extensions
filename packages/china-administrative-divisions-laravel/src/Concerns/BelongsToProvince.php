@@ -37,13 +37,12 @@ trait BelongsToProvince
     }
 
     /**
-     * @param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
-     * @param mixed $code
-     *
-     * @return static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     * @phpstan-param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
      */
-    public function scopeWhereProvinceCode($query, $code)
-    {
+    public function scopeWhereProvinceCode(
+        mixed $query,
+        mixed $code
+    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
         if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedProvinceCodeName(), $code);
         }
@@ -56,13 +55,12 @@ trait BelongsToProvince
     }
 
     /**
-     * @param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
-     * @param mixed $code
-     *
-     * @return static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     * @phpstan-param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
      */
-    public function scopeWhereProvinceCodeNot($query, $code)
-    {
+    public function scopeWhereProvinceCodeNot(
+        mixed $query,
+        mixed $code
+    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
         if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedProvinceCodeName(), $code);
         }

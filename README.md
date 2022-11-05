@@ -8,7 +8,7 @@
 [![License](https://poser.pugx.org/zing/laravel-eloquent-extensions/license)](https://packagist.org/packages/zing/laravel-eloquent-extensions)
 [![Code Climate](https://api.codeclimate.com/v1/badges/e243742cfef988445a3f/maintainability)](https://codeclimate.com/github/zingimmick/laravel-eloquent-extensions/maintainability)
 
-> **Requires [PHP 7.3.0+](https://php.net/releases/)**
+> **Requires [PHP 8.0+](https://php.net/releases/)**
 
 ## License
 

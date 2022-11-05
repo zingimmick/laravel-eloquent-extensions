@@ -13,7 +13,7 @@ use Rector\Set\ValueObject\LevelSetList;
 use Zing\CodingStandard\Set\RectorSetList;
 
 return static function (Rector\Config\RectorConfig $rectorConfig): void {
-    $rectorConfig->sets([LevelSetList::UP_TO_PHP_73, PHPUnitSetList::PHPUNIT_CODE_QUALITY, RectorSetList::CUSTOM]);
+    $rectorConfig->sets([LevelSetList::UP_TO_PHP_80, PHPUnitSetList::PHPUNIT_CODE_QUALITY, RectorSetList::CUSTOM]);
     $rectorConfig->phpstanConfig(__DIR__ . '/phpstan.neon');
     $rectorConfig->bootstrapFiles([__DIR__ . '/vendor/nunomaduro/larastan/bootstrap.php']);
     $rectorConfig->skip([
@@ -21,7 +21,6 @@ return static function (Rector\Config\RectorConfig $rectorConfig): void {
         RenameParamToMatchTypeRector::class,
         AddSeeTestAnnotationRector::class,
         FinalizeClassesWithoutChildrenRector::class,
-        RepeatedLiteralToClassConstantRector::class,
         PrivatizeLocalGetterToPropertyRector::class,
     ]);
     $rectorConfig->paths(

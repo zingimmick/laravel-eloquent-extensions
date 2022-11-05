@@ -37,13 +37,12 @@ trait BelongsToStreet
     }
 
     /**
-     * @param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
-     * @param mixed $code
-     *
-     * @return static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     * @phpstan-param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
      */
-    public function scopeWhereStreetCode($query, $code)
-    {
+    public function scopeWhereStreetCode(
+        mixed $query,
+        mixed $code
+    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
         if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedStreetCodeName(), $code);
         }
@@ -56,13 +55,12 @@ trait BelongsToStreet
     }
 
     /**
-     * @param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
-     * @param mixed $code
-     *
-     * @return static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder
+     * @phpstan-param static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $query
      */
-    public function scopeWhereStreetCodeNot($query, $code)
-    {
+    public function scopeWhereStreetCodeNot(
+        mixed $query,
+        mixed $code
+    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
         if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedStreetCodeName(), $code);
         }
