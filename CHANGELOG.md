@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.0.0 - 2022-12-14
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+### What's Changed
+
+#### Other Changes
+
+- Remove bootstrap file for larastan by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/72
+- Allow PHP 8.2 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/79
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/2.0.0...3.0.0
+
 ## 2.0.0 - 2022-08-29
 
 <!-- Release notes generated using configuration in .github/release.yml at 2.x -->
