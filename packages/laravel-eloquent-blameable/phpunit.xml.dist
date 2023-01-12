@@ -6,7 +6,7 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="Package Skeleton Laravel Test Suite">
+    <testsuite name="Laravel Eloquent Blameable Test Suite">
       <directory>./tests</directory>
     </testsuite>
   </testsuites>
