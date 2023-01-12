@@ -1,0 +1,11 @@
+name: Auto-Merge
+on:
+  pull_request_target:
+    types: [labeled]
+
+jobs:
+  enable-auto-merge:
+    name: Enable Auto-Merge
+    uses: zingimmick/.github/.github/workflows/auto-merge.yml@main
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
