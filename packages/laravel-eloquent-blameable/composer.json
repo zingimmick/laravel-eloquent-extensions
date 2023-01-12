@@ -1,12 +1,12 @@
 {
-    "name": "zing/package-skeleton-laravel",
-    "description": "A skeleton repository for Laravel Packages",
-    "keywords": ["laravel", "package", "skeleton"],
+    "name": "zing/laravel-eloquent-blameable",
+    "description": "Track the creator and updater for Laravel eloquent",
+    "keywords": ["laravel", "eloquent", "blameable"],
     "license": "MIT",
-    "homepage": "https://github.com/zingimmick/package-skeleton-laravel",
+    "homepage": "https://github.com/zingimmick/laravel-eloquent-blameable",
     "support": {
-        "issues": "https://github.com/zingimmick/package-skeleton-laravel/issues",
-        "source": "https://github.com/zingimmick/package-skeleton-laravel"
+        "issues": "https://github.com/zingimmick/laravel-eloquent-blameable/issues",
+        "source": "https://github.com/zingimmick/laravel-eloquent-blameable"
     },
     "authors": [
         {
@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Zing\\Skeleton\\": "src"
+            "Zing\\LaravelEloquentBlameable\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zing\\Skeleton\\Tests\\": "tests"
+            "Zing\\LaravelEloquentBlameable\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -69,11 +69,8 @@
         },
         "laravel": {
             "providers": [
-                "Zing\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "Zing\\Skeleton\\Facades\\Skeleton"
-            }
+                "Zing\\LaravelEloquentBlameable\\LaravelEloquentBlameableServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
