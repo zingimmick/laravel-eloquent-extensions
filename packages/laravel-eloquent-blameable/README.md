@@ -1,11 +1,9 @@
-# Package Skeleton Laravel
+# Laravel Eloquent Blameable
 
-[![tests](https://github.com/zingimmick/package-skeleton-laravel/actions/workflows/tests.yml/badge.svg?branch=2.x)](https://github.com/zingimmick/package-skeleton-laravel/actions/workflows/tests.yml)
-[![Code Coverage](https://codecov.io/gh/zingimmick/package-skeleton-laravel/branch/2.x/graph/badge.svg)](https://codecov.io/gh/zingimmick/package-skeleton-laravel)
-[![Latest Stable Version](https://poser.pugx.org/zing/package-skeleton-laravel/v/stable.svg)](https://packagist.org/packages/zing/package-skeleton-laravel)
-[![Total Downloads](https://poser.pugx.org/zing/package-skeleton-laravel/downloads)](https://packagist.org/packages/zing/package-skeleton-laravel)
-[![Latest Unstable Version](https://poser.pugx.org/zing/package-skeleton-laravel/v/unstable.svg)](https://packagist.org/packages/zing/package-skeleton-laravel)
-[![License](https://poser.pugx.org/zing/package-skeleton-laravel/license)](https://packagist.org/packages/zing/package-skeleton-laravel)
+[![Latest Stable Version](https://poser.pugx.org/zing/laravel-eloquent-blameable/v/stable.svg)](https://packagist.org/packages/zing/laravel-eloquent-blameable)
+[![Total Downloads](https://poser.pugx.org/zing/laravel-eloquent-blameable/downloads)](https://packagist.org/packages/zing/laravel-eloquent-blameable)
+[![Latest Unstable Version](https://poser.pugx.org/zing/laravel-eloquent-blameable/v/unstable.svg)](https://packagist.org/packages/zing/laravel-eloquent-blameable)
+[![License](https://poser.pugx.org/zing/laravel-eloquent-blameable/license)](https://packagist.org/packages/zing/laravel-eloquent-blameable)
 
 ### Requirements
 
@@ -13,12 +11,12 @@
 - [Composer](https://getcomposer.org)
 - [Laravel 8.0+](https://laravel.com/docs/releases)
 
-Require Package Skeleton Laravel using [Composer](https://getcomposer.org):
+Require Laravel Eloquent Blameable using [Composer](https://getcomposer.org):
 
 ```bash
-composer create-project zing/package-skeleton-laravel --prefer-source laravel-package
+composer require zing/laravel-eloquent-blameable
 ```
 
 ## License
 
-Package Skeleton Laravel is an open-sourced software licensed under the [MIT license](LICENSE).
+Laravel Eloquent Blameable is an open-sourced software licensed under the [MIT license](LICENSE).
