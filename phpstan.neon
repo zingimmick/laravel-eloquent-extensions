@@ -10,3 +10,4 @@ parameters:
     checkGenericClassInNonGenericObjectType: false
     ignoreErrors:
         - '#Method (.*?) should return Illuminate\\Database\\Eloquent\\Collection but returns Illuminate\\Support\\Collection<(.*?)>.#'
+        - '#Call to function method_exists\(\) with \$this\(Zing\\(.*?)\\Tests\\(.*?)\) and (.*?)getProvidedData(.*?) will always evaluate to false.#'
