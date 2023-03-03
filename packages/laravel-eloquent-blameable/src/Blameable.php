@@ -13,11 +13,18 @@ trait Blameable
     public static function bootBlameable(): void
     {
         static::creating(static function ($model): void {
-            $model->{$model->getCreatorKeyName()} ??= Auth::id();
-            $model->{$model->getUpdaterKeyName()} ??= Auth::id();
+            if ($model->getCreatorKeyName()) {
+                $model->{$model->getCreatorKeyName()} ??= Auth::id();
+            }
+
+            if ($model->getUpdaterKeyName() !== null) {
+                $model->{$model->getUpdaterKeyName()} ??= Auth::id();
+            }
         });
         static::updating(static function ($model): void {
-            $model->{$model->getUpdaterKeyName()} = Auth::id();
+            if ($model->getUpdaterKeyName() !== null) {
+                $model->{$model->getUpdaterKeyName()} = Auth::id();
+            }
         });
     }
 
