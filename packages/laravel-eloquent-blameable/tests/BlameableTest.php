@@ -32,7 +32,7 @@ final class BlameableTest extends TestCase
         $content = Content::query()->create([
             'title' => $this->faker->sentence(),
         ]);
-        $this->assertDatabaseHas(Content::class, [
+        $this->assertDatabaseHas('contents', [
             $content->getKeyName() => $content->getKey(),
             $content->getCreatorKeyName() => $creator->getKey(),
             $content->getUpdaterKeyName() => $creator->getKey(),
@@ -41,7 +41,7 @@ final class BlameableTest extends TestCase
         Auth::setUser($updater);
         $content->title = $this->faker->sentence();
         $content->save();
-        $this->assertDatabaseHas(Content::class, [
+        $this->assertDatabaseHas('contents', [
             $content->getKeyName() => $content->getKey(),
             $content->getCreatorKeyName() => $creator->getKey(),
             $content->getUpdaterKeyName() => $updater->getKey(),
@@ -57,7 +57,7 @@ final class BlameableTest extends TestCase
         $content = ContentWithCreator::query()->create([
             'title' => $this->faker->sentence(),
         ]);
-        $this->assertDatabaseHas(ContentWithCreator::class, [
+        $this->assertDatabaseHas('contents', [
             $content->getKeyName() => $content->getKey(),
             $content->getCreatorKeyName() => $creator->getKey(),
         ]);
@@ -65,7 +65,7 @@ final class BlameableTest extends TestCase
         Auth::setUser($updater);
         $content->title = $this->faker->sentence();
         $content->save();
-        $this->assertDatabaseHas(ContentWithCreator::class, [
+        $this->assertDatabaseHas('contents', [
             $content->getKeyName() => $content->getKey(),
             $content->getCreatorKeyName() => $creator->getKey(),
         ]);
@@ -80,7 +80,7 @@ final class BlameableTest extends TestCase
         $content = ContentWithUpdater::query()->create([
             'title' => $this->faker->sentence(),
         ]);
-        $this->assertDatabaseHas(ContentWithUpdater::class, [
+        $this->assertDatabaseHas('contents', [
             $content->getKeyName() => $content->getKey(),
             $content->getUpdaterKeyName() => $creator->getKey(),
         ]);
@@ -88,7 +88,7 @@ final class BlameableTest extends TestCase
         Auth::setUser($updater);
         $content->title = $this->faker->sentence();
         $content->save();
-        $this->assertDatabaseHas(ContentWithUpdater::class, [
+        $this->assertDatabaseHas('contents', [
             $content->getKeyName() => $content->getKey(),
             $content->getUpdaterKeyName() => $updater->getKey(),
         ]);
