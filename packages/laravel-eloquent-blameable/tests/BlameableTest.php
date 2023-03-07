@@ -93,4 +93,29 @@ final class BlameableTest extends TestCase
             $content->getUpdaterKeyName() => $updater->getKey(),
         ]);
     }
+
+    public function testContentScope(): void
+    {
+        $creator = User::query()->create();
+        Auth::setUser($creator);
+
+        /** @var \Zing\LaravelEloquentBlameable\Tests\Models\Content $content */
+        $content = Content::query()->create([
+            'title' => $this->faker->sentence(),
+        ]);
+        self::assertSame($content->getCreatorKey(), $creator->getKey());
+        self::assertSame(1, Content::query()->whereCreatorKey($creator->getKey())->count());
+        self::assertSame(0, Content::query()->whereCreatorKeyNot($creator->getKey())->count());
+        self::assertSame(1, Content::query()->whereCreatorKey([$creator->getKey()])->count());
+        self::assertSame(0, Content::query()->whereCreatorKeyNot([$creator->getKey()])->count());
+        $updater = User::query()->create();
+        Auth::setUser($updater);
+        $content->title = $this->faker->sentence();
+        $content->save();
+        self::assertSame($content->getUpdaterKey(), $updater->getKey());
+        self::assertSame(1, Content::query()->whereUpdaterKey($updater->getKey())->count());
+        self::assertSame(0, Content::query()->whereUpdaterKeyNot($updater->getKey())->count());
+        self::assertSame(1, Content::query()->whereUpdaterKey([$updater->getKey()])->count());
+        self::assertSame(0, Content::query()->whereUpdaterKeyNot([$updater->getKey()])->count());
+    }
 }

@@ -9,6 +9,10 @@ use Zing\LaravelEloquentBlameable\Blameable;
 
 /**
  * @property string $title
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|\Zing\LaravelEloquentBlameable\Tests\Models\Content newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Zing\LaravelEloquentBlameable\Tests\Models\Content newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Zing\LaravelEloquentBlameable\Tests\Models\Content query()
  */
 class Content extends Model
 {
