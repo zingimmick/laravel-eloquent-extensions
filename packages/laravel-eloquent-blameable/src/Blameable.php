@@ -22,12 +22,8 @@ trait Blameable
             if ($model->getCreatorKeyName()) {
                 $model->{$model->getCreatorKeyName()} ??= Auth::id();
             }
-
-            if ($model->getUpdaterKeyName() !== null) {
-                $model->{$model->getUpdaterKeyName()} ??= Auth::id();
-            }
         });
-        static::updating(static function ($model): void {
+        static::saving(static function ($model): void {
             if ($model->getUpdaterKeyName() !== null) {
                 $model->{$model->getUpdaterKeyName()} = Auth::id();
             }
