@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Zing\LaravelEloquentBlameable\Tests\Models\Content;
 use Zing\LaravelEloquentBlameable\Tests\Models\ContentWithCreator;
 use Zing\LaravelEloquentBlameable\Tests\Models\ContentWithUpdater;
+use Zing\LaravelEloquentBlameable\Tests\Models\CustomContent;
 use Zing\LaravelEloquentBlameable\Tests\Models\User;
 
 /**
@@ -117,5 +118,40 @@ final class BlameableTest extends TestCase
         self::assertSame(0, Content::query()->whereUpdaterKeyNot($updater->getKey())->count());
         self::assertSame(1, Content::query()->whereUpdaterKey([$updater->getKey()])->count());
         self::assertSame(0, Content::query()->whereUpdaterKeyNot([$updater->getKey()])->count());
+    }
+
+    public function testCustomContentWithCreatorAndUpdater(): void
+    {
+        $creator = User::query()->create();
+        Auth::setUser($creator);
+
+        /** @var \Zing\LaravelEloquentBlameable\Tests\Models\CustomContent $content */
+        $content = CustomContent::query()->create([
+            'title' => $this->faker->sentence(),
+        ]);
+        $this->assertDatabaseHas('custom_contents', [
+            $content->getKeyName() => $content->getKey(),
+            $content->getCreatorKeyName() => $creator->getKey(),
+            $content->getUpdaterKeyName() => $creator->getKey(),
+        ]);
+        self::assertSame($content->getCreatorKey(), $creator->getKey());
+        self::assertSame(1, CustomContent::query()->whereCreatorKey($creator->getKey())->count());
+        self::assertSame(0, CustomContent::query()->whereCreatorKeyNot($creator->getKey())->count());
+        self::assertSame(1, CustomContent::query()->whereCreatorKey([$creator->getKey()])->count());
+        self::assertSame(0, CustomContent::query()->whereCreatorKeyNot([$creator->getKey()])->count());
+        $updater = User::query()->create();
+        Auth::setUser($updater);
+        $content->title = $this->faker->sentence();
+        $content->save();
+        $this->assertDatabaseHas('custom_contents', [
+            $content->getKeyName() => $content->getKey(),
+            $content->getCreatorKeyName() => $creator->getKey(),
+            $content->getUpdaterKeyName() => $updater->getKey(),
+        ]);
+        self::assertSame($content->getUpdaterKey(), $updater->getKey());
+        self::assertSame(1, CustomContent::query()->whereUpdaterKey($updater->getKey())->count());
+        self::assertSame(0, CustomContent::query()->whereUpdaterKeyNot($updater->getKey())->count());
+        self::assertSame(1, CustomContent::query()->whereUpdaterKey([$updater->getKey()])->count());
+        self::assertSame(0, CustomContent::query()->whereUpdaterKeyNot([$updater->getKey()])->count());
     }
 }
