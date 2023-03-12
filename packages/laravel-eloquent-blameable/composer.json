@@ -66,11 +66,6 @@
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
-        },
-        "laravel": {
-            "providers": [
-                "Zing\\LaravelEloquentBlameable\\LaravelEloquentBlameableServiceProvider"
-            ]
         }
     },
     "minimum-stability": "dev",
