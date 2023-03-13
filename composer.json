@@ -40,6 +40,7 @@
     "replace": {
         "zing/china-administrative-divisions-laravel": "self.version",
         "zing/laravel-eloquent-blamable": "self.version",
+        "zing/laravel-eloquent-blameable": "self.version",
         "zing/laravel-eloquent-images": "self.version",
         "zing/laravel-eloquent-tags": "self.version"
     },
@@ -80,9 +81,6 @@
         ]
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "2.x-dev"
-        },
         "laravel": {
             "providers": [
                 "Zing\\LaravelEloquentImages\\EloquentImagesServiceProvider",
