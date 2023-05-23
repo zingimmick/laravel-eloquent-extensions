@@ -12,32 +12,17 @@ env:
   COMPOSER_ROOT_VERSION: "dev-master"
 
 jobs:
-  provide-packages-json:
-    # see json juggling: https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3.5.2
-
-      - uses: shivammathur/setup-php@2.24.0
-
-      - uses: ramsey/composer-install@v2
-
-      # get package json list
-      - id: output_data
-        run: echo "matrix=$(vendor/bin/monorepo-builder packages-json --tests)" >> $GITHUB_OUTPUT
-
-    outputs:
-      matrix: ${{ steps.output_data.outputs.matrix }}
-
   split-tests:
-    needs: provide-packages-json
-
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        package: ${{ fromJson(needs.provide-packages-json.outputs.matrix )}}
+        package:
+          - china-administrative-divisions-laravel
+          - laravel-eloquent-blameable
+          - laravel-eloquent-images
+          - laravel-eloquent-tags
 
     name: Split Tests of ${{ matrix.package }}
 
