@@ -52,13 +52,13 @@ abstract class TestCase extends BaseTestCase
         });
     }
 
-protected function tearDown(): void
-{
-    Schema::drop('users');
-    Schema::drop('contents');
+    protected function tearDown(): void
+    {
+        Schema::drop('users');
+        Schema::drop('contents');
 
-    parent::tearDown();
-}
+        parent::tearDown();
+    }
 
     protected function getEnvironmentSetUp($app): void
     {
