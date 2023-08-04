@@ -42,7 +42,7 @@ trait BelongsToProvince
     public function scopeWhereProvinceCode(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedProvinceCodeName(), $code);
         }
@@ -60,7 +60,7 @@ trait BelongsToProvince
     public function scopeWhereProvinceCodeNot(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedProvinceCodeName(), $code);
         }

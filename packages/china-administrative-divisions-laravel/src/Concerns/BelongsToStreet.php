@@ -42,7 +42,7 @@ trait BelongsToStreet
     public function scopeWhereStreetCode(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedStreetCodeName(), $code);
         }
@@ -60,7 +60,7 @@ trait BelongsToStreet
     public function scopeWhereStreetCodeNot(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedStreetCodeName(), $code);
         }
