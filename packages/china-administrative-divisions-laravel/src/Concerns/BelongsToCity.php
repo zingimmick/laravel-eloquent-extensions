@@ -42,7 +42,7 @@ trait BelongsToCity
     public function scopeWhereCityCode(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedCityCodeName(), $code);
         }
@@ -60,7 +60,7 @@ trait BelongsToCity
     public function scopeWhereCityCodeNot(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedCityCodeName(), $code);
         }

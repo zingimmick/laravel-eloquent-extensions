@@ -39,7 +39,7 @@ final class HasTagsTest extends TestCase
     /**
      * @return iterable<array{class-string<\Zing\LaravelEloquentTags\Tag>}|array{class-string<\Zing\LaravelEloquentTags\Tests\Models\CustomTag>}>
      */
-    public static function provideClasses(): \Iterator
+    public static function provideClasses(): iterable
     {
         yield [Tag::class];
 

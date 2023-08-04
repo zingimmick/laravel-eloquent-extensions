@@ -42,7 +42,7 @@ trait BelongsToArea
     public function scopeWhereAreaCode(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereIn($this->getQualifiedAreaCodeName(), $code);
         }
@@ -60,7 +60,7 @@ trait BelongsToArea
     public function scopeWhereAreaCodeNot(
         mixed $query,
         mixed $code
-    ): static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder {
+    ): \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|static {
         if (\is_array($code)) {
             return $query->whereNotIn($this->getQualifiedAreaCodeName(), $code);
         }
