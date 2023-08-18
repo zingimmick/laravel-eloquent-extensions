@@ -104,20 +104,20 @@ final class BlameableTest extends TestCase
         $content = Content::query()->create([
             'title' => $this->faker->sentence(),
         ]);
-        self::assertSame($content->getCreatorKey(), $creator->getKey());
-        self::assertSame(1, Content::query()->whereCreatorKey($creator->getKey())->count());
-        self::assertSame(0, Content::query()->whereCreatorKeyNot($creator->getKey())->count());
-        self::assertSame(1, Content::query()->whereCreatorKey([$creator->getKey()])->count());
-        self::assertSame(0, Content::query()->whereCreatorKeyNot([$creator->getKey()])->count());
+        $this->assertSame($content->getCreatorKey(), $creator->getKey());
+        $this->assertSame(1, Content::query()->whereCreatorKey($creator->getKey())->count());
+        $this->assertSame(0, Content::query()->whereCreatorKeyNot($creator->getKey())->count());
+        $this->assertSame(1, Content::query()->whereCreatorKey([$creator->getKey()])->count());
+        $this->assertSame(0, Content::query()->whereCreatorKeyNot([$creator->getKey()])->count());
         $updater = User::query()->create();
         Auth::setUser($updater);
         $content->title = $this->faker->sentence();
         $content->save();
-        self::assertSame($content->getUpdaterKey(), $updater->getKey());
-        self::assertSame(1, Content::query()->whereUpdaterKey($updater->getKey())->count());
-        self::assertSame(0, Content::query()->whereUpdaterKeyNot($updater->getKey())->count());
-        self::assertSame(1, Content::query()->whereUpdaterKey([$updater->getKey()])->count());
-        self::assertSame(0, Content::query()->whereUpdaterKeyNot([$updater->getKey()])->count());
+        $this->assertSame($content->getUpdaterKey(), $updater->getKey());
+        $this->assertSame(1, Content::query()->whereUpdaterKey($updater->getKey())->count());
+        $this->assertSame(0, Content::query()->whereUpdaterKeyNot($updater->getKey())->count());
+        $this->assertSame(1, Content::query()->whereUpdaterKey([$updater->getKey()])->count());
+        $this->assertSame(0, Content::query()->whereUpdaterKeyNot([$updater->getKey()])->count());
     }
 
     public function testCustomContentWithCreatorAndUpdater(): void
@@ -134,11 +134,11 @@ final class BlameableTest extends TestCase
             $content->getCreatorKeyName() => $creator->getKey(),
             $content->getUpdaterKeyName() => $creator->getKey(),
         ]);
-        self::assertSame($content->getCreatorKey(), $creator->getKey());
-        self::assertSame(1, CustomContent::query()->whereCreatorKey($creator->getKey())->count());
-        self::assertSame(0, CustomContent::query()->whereCreatorKeyNot($creator->getKey())->count());
-        self::assertSame(1, CustomContent::query()->whereCreatorKey([$creator->getKey()])->count());
-        self::assertSame(0, CustomContent::query()->whereCreatorKeyNot([$creator->getKey()])->count());
+        $this->assertSame($content->getCreatorKey(), $creator->getKey());
+        $this->assertSame(1, CustomContent::query()->whereCreatorKey($creator->getKey())->count());
+        $this->assertSame(0, CustomContent::query()->whereCreatorKeyNot($creator->getKey())->count());
+        $this->assertSame(1, CustomContent::query()->whereCreatorKey([$creator->getKey()])->count());
+        $this->assertSame(0, CustomContent::query()->whereCreatorKeyNot([$creator->getKey()])->count());
         $updater = User::query()->create();
         Auth::setUser($updater);
         $content->title = $this->faker->sentence();
@@ -148,10 +148,10 @@ final class BlameableTest extends TestCase
             $content->getCreatorKeyName() => $creator->getKey(),
             $content->getUpdaterKeyName() => $updater->getKey(),
         ]);
-        self::assertSame($content->getUpdaterKey(), $updater->getKey());
-        self::assertSame(1, CustomContent::query()->whereUpdaterKey($updater->getKey())->count());
-        self::assertSame(0, CustomContent::query()->whereUpdaterKeyNot($updater->getKey())->count());
-        self::assertSame(1, CustomContent::query()->whereUpdaterKey([$updater->getKey()])->count());
-        self::assertSame(0, CustomContent::query()->whereUpdaterKeyNot([$updater->getKey()])->count());
+        $this->assertSame($content->getUpdaterKey(), $updater->getKey());
+        $this->assertSame(1, CustomContent::query()->whereUpdaterKey($updater->getKey())->count());
+        $this->assertSame(0, CustomContent::query()->whereUpdaterKeyNot($updater->getKey())->count());
+        $this->assertSame(1, CustomContent::query()->whereUpdaterKey([$updater->getKey()])->count());
+        $this->assertSame(0, CustomContent::query()->whereUpdaterKeyNot([$updater->getKey()])->count());
     }
 }
