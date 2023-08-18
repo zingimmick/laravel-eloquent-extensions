@@ -19,8 +19,8 @@ final class InitCommandTest extends TestCase
     {
         Storage::delete('pca-code.json');
         $this->artisan(InitCommand::class);
-        self::assertTrue(Province::query()->exists());
-        self::assertTrue(City::query()->exists());
-        self::assertTrue(Area::query()->exists());
+        $this->assertTrue(Province::query()->exists());
+        $this->assertTrue(City::query()->exists());
+        $this->assertTrue(Area::query()->exists());
     }
 }
