@@ -27,7 +27,7 @@ jobs:
     name: Split Tests of ${{ matrix.package }}
 
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: actions/checkout@v4.1.1
 
       - uses: shivammathur/setup-php@2.26.0
 
