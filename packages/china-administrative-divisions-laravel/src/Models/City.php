@@ -36,9 +36,6 @@ class City extends Model
      */
     public $timestamps = false;
 
-    /**
-     * @var string[]
-     */
     protected $fillable = ['code', 'name', 'province_code'];
 
     public function getTable(): string

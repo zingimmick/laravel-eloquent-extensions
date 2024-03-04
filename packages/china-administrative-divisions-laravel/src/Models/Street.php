@@ -44,9 +44,6 @@ class Street extends Model
      */
     public $timestamps = false;
 
-    /**
-     * @var string[]
-     */
     protected $fillable = ['code', 'name', 'province_code', 'city_code', 'area_code'];
 
     public function getTable(): string
