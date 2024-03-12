@@ -23,7 +23,7 @@ jobs:
     name: Monorepo Split of ${{ matrix.package }}
 
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.2
         with:
           fetch-depth: '0'
           persist-credentials: 'false'
