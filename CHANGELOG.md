@@ -8,6 +8,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.3.0 - 2024-03-18
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+### What's Changed
+
+#### Other Changes
+
+* Remove monorepo-builder packages-json from github actions by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/94
+* Fix coding style by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/99
+* Rename skipped rules on $rectorConfig->skip() are changed to different namespace by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/101
+* Support for PHP 8.3 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/108
+* Update license copyright year(s) by @github-actions in https://github.com/zingimmick/laravel-eloquent-extensions/pull/112
+* Support for Laravel 11 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/118
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/3.2.0...3.3.0
+
 ## 3.2.0 - 2023-03-18
 
 <!-- Release notes generated using configuration in .github/release.yml at 3.x -->
