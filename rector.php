@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Rector\Naming\Rector\Assign\RenameVariableToMatchMethodCallReturnTypeRector;
 use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
-use Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Privatization\Rector\MethodCall\PrivatizeLocalGetterToPropertyRector;
 use Rector\Set\ValueObject\LevelSetList;
@@ -17,7 +16,6 @@ return static function (\Rector\Config\RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
         RenameVariableToMatchMethodCallReturnTypeRector::class,
         RenameParamToMatchTypeRector::class,
-        AddSeeTestAnnotationRector::class,
         PrivatizeLocalGetterToPropertyRector::class,
     ]);
     $rectorConfig->paths(
