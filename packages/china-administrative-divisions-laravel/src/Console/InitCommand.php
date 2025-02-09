@@ -54,6 +54,7 @@ class InitCommand extends Command
                     collect($item['children'])->each(
                         /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>} $item */
                         static function (array $item) use ($province): void {
+                            /** @var \Zing\ChinaAdministrativeDivisions\Models\City $city */
                             $city = $province->cities()
                                 ->updateOrCreate([
                                     'code' => $item['code'],
