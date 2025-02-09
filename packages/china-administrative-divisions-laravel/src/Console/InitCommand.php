@@ -6,6 +6,7 @@ namespace Zing\ChinaAdministrativeDivisions\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use Zing\ChinaAdministrativeDivisions\Models\City;
 use Zing\ChinaAdministrativeDivisions\Models\Province;
 
 class InitCommand extends Command
@@ -54,6 +55,7 @@ class InitCommand extends Command
                     collect($item['children'])->each(
                         /** @phpstan-param array{code: string, name: string, children: iterable<int, array{code: string, name: string, children: null}>} $item */
                         static function (array $item) use ($province): void {
+                            /** @var City $city */
                             $city = $province->cities()
                                 ->updateOrCreate([
                                     'code' => $item['code'],

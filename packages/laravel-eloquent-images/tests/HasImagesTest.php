@@ -80,7 +80,6 @@ final class HasImagesTest extends TestCase
     {
         $this->product->attachImages(['foo', 'bar']);
         $this->assertInstanceOf($imageClass, $this->product->images()->first());
-        $this->assertInstanceOf(Collection::class, $this->product->images()->get());
     }
 
     /**
@@ -139,7 +138,9 @@ final class HasImagesTest extends TestCase
     public function testSyncImages(string $imageClass): void
     {
         $this->product->attachImages(['foo', 'bar']);
-        $this->product->syncImages([$this->product->images()->firstOrFail()]);
+        /** @var Image $image */
+        $image = $this->product->images()->firstOrFail();
+        $this->product->syncImages([$image]);
         $this->assertSame(1, $this->product->images()->count());
         $this->product->syncImages([]);
         $this->assertSame(0, $this->product->images()->count());
