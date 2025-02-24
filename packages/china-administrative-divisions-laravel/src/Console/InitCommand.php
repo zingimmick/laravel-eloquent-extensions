@@ -10,9 +10,6 @@ use Zing\ChinaAdministrativeDivisions\Models\Province;
 
 class InitCommand extends Command
 {
-    /**
-     * @var string
-     */
     private const PATH = 'pca-code.json';
 
     /**
