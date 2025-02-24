@@ -8,6 +8,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.4.0 - 2025-02-24
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+### What's Changed
+
+#### Other Changes
+
+* Allow PHPUnit 11 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/121
+* Allow PHPUnit 11 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/122
+* Update pca-code.json from modood/Administrative-divisions-of-China 2.7.0 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/123
+* ci: add .deepsource.toml by @deepsource-autofix in https://github.com/zingimmick/laravel-eloquent-extensions/pull/130
+* ci: add packages/china-administrative-divisions-laravel/.deepsource.toml by @deepsource-autofix in https://github.com/zingimmick/laravel-eloquent-extensions/pull/131
+* Remove rules that were never registered by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/138
+* Support for PHP 8.4 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/143
+* Allow orchestra/testbench 9.0 and nesbot/carbon 3.4 in tests action by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/145
+* Update license copyright year(s) by @github-actions in https://github.com/zingimmick/laravel-eloquent-extensions/pull/147
+* Update nunomaduro/larastan requirement from ^1.0 || ^2.0 to ^1.0 || ^2.0 || ^3.0 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/148
+* Use larastan/larastan instead of nunomaduro/larastan by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/149
+* Support for Laravel 12 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/150
+
+### New Contributors
+
+* @deepsource-autofix made their first contribution in https://github.com/zingimmick/laravel-eloquent-extensions/pull/130
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/3.3.0...3.4.0
+
 ## 3.3.0 - 2024-03-18
 
 <!-- Release notes generated using configuration in .github/release.yml at 3.x -->
