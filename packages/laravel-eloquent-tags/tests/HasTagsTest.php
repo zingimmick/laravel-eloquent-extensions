@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Zing\LaravelEloquentTags\Tests;
 
+use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Zing\LaravelEloquentTags\Tag;
 use Zing\LaravelEloquentTags\Tests\Models\CustomTag;
@@ -24,6 +25,7 @@ final class HasTagsTest extends TestCase
     /**
      * @before
      */
+    #[Before]
     public function setUpTagClass(): void
     {
         $this->afterApplicationCreated(function (): void {

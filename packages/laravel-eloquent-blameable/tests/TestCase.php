@@ -7,12 +7,14 @@ namespace Zing\LaravelEloquentBlameable\Tests;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use PHPUnit\Framework\Attributes\Before;
 
 abstract class TestCase extends BaseTestCase
 {
     /**
      * @before
      */
+    #[Before]
     protected function setUpDatabaseMigrations(): void
     {
         $this->afterApplicationCreated(static function (): void {

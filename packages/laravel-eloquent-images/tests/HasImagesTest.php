@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Zing\LaravelEloquentImages\Tests;
 
+use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Zing\LaravelEloquentImages\Image;
 use Zing\LaravelEloquentImages\Tests\Models\CustomImage;
@@ -24,6 +25,7 @@ final class HasImagesTest extends TestCase
     /**
      * @before
      */
+    #[Before]
     public function setUpImageClass(): void
     {
         $this->afterApplicationCreated(function (): void {
