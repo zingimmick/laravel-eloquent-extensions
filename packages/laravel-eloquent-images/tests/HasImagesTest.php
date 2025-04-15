@@ -35,16 +35,6 @@ final class HasImagesTest extends TestCase
         });
     }
 
-    /**
-     * @return \Iterator<array{class-string<\Zing\LaravelEloquentImages\Image>}|array{class-string<\Zing\LaravelEloquentImages\Tests\Models\CustomImage>}>
-     */
-    public static function provideClasses(): \Iterator
-    {
-        yield [Image::class];
-
-        yield [CustomImage::class];
-    }
-
     private Product $product;
 
     /**
@@ -156,5 +146,15 @@ final class HasImagesTest extends TestCase
     {
         $this->product->attachImage('foo');
         $this->assertTrue(Product::query()->withAnyImages(['foo', 'bar'])->exists());
+    }
+
+    /**
+     * @return \Iterator<array{class-string<\Zing\LaravelEloquentImages\Image>}|array{class-string<\Zing\LaravelEloquentImages\Tests\Models\CustomImage>}>
+     */
+    public static function provideClasses(): \Iterator
+    {
+        yield [Image::class];
+
+        yield [CustomImage::class];
     }
 }
