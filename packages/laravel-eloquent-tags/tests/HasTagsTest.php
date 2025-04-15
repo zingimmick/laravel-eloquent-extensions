@@ -36,16 +36,6 @@ final class HasTagsTest extends TestCase
         });
     }
 
-    /**
-     * @return \Iterator<array{class-string<\Zing\LaravelEloquentTags\Tag>}|array{class-string<\Zing\LaravelEloquentTags\Tests\Models\CustomTag>}>
-     */
-    public static function provideClasses(): \Iterator
-    {
-        yield [Tag::class];
-
-        yield [CustomTag::class];
-    }
-
     private Product $product;
 
     /**
@@ -152,5 +142,15 @@ final class HasTagsTest extends TestCase
     {
         $this->product->attachTag('foo');
         $this->assertTrue(Product::query()->withAnyTags(['foo', 'bar'])->exists());
+    }
+
+    /**
+     * @return \Iterator<array{class-string<\Zing\LaravelEloquentTags\Tag>}|array{class-string<\Zing\LaravelEloquentTags\Tests\Models\CustomTag>}>
+     */
+    public static function provideClasses(): \Iterator
+    {
+        yield [Tag::class];
+
+        yield [CustomTag::class];
     }
 }
