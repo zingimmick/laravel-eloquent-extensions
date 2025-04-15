@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Zing\LaravelEloquentImages\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Zing\LaravelEloquentImages\Image;
 use Zing\LaravelEloquentImages\Tests\Models\CustomImage;
 use Zing\LaravelEloquentImages\Tests\Models\Product;
@@ -52,6 +53,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testDetachImages(string $imageClass): void
     {
         $this->product->attachImages(['foo', 'bar']);
@@ -64,6 +66,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testAttachImages(string $imageClass): void
     {
         $this->product->attachImages(['foo', 'bar']);
@@ -75,6 +78,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testImages(string $imageClass): void
     {
         $this->product->attachImages(['foo', 'bar']);
@@ -86,6 +90,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testImagesPriority(string $imageClass): void
     {
         $this->product->syncImages(['foo', 'bar']);
@@ -99,6 +104,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testAttachImage(string $imageClass): void
     {
         $this->product->attachImage('foo');
@@ -110,6 +116,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testDetachImage(string $imageClass): void
     {
         $this->product->attachImages(['foo', 'bar']);
@@ -122,6 +129,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testScopeWithAllImages(string $imageClass): void
     {
         $this->product->attachImage('foo');
@@ -134,6 +142,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testSyncImages(string $imageClass): void
     {
         $this->product->attachImages(['foo', 'bar']);
@@ -152,6 +161,7 @@ final class HasImagesTest extends TestCase
      *
      * @param class-string $imageClass
      */
+    #[DataProvider('provideClasses')]
     public function testScopeWithAnyImages(string $imageClass): void
     {
         $this->product->attachImage('foo');

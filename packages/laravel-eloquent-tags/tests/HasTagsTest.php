@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Zing\LaravelEloquentTags\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Zing\LaravelEloquentTags\Tag;
 use Zing\LaravelEloquentTags\Tests\Models\CustomTag;
 use Zing\LaravelEloquentTags\Tests\Models\Product;
@@ -52,6 +53,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testDetachTags(string $tagClass): void
     {
         $this->product->attachTags(['foo', 'bar']);
@@ -64,6 +66,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testAttachTags(string $tagClass): void
     {
         $this->product->attachTags(['foo', 'bar']);
@@ -75,6 +78,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testTags(string $tagClass): void
     {
         $this->product->attachTags(['foo', 'bar']);
@@ -86,6 +90,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testAttachTag(string $tagClass): void
     {
         $this->product->attachTag('foo');
@@ -97,6 +102,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testDetachTag(string $tagClass): void
     {
         $this->product->attachTags(['foo', 'bar']);
@@ -109,6 +115,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testScopeWithAllTags(string $tagClass): void
     {
         $this->product->attachTag('foo');
@@ -121,6 +128,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testSyncTags(string $tagClass): void
     {
         $this->product->attachTags(['foo', 'bar']);
@@ -139,6 +147,7 @@ final class HasTagsTest extends TestCase
      *
      * @param class-string $tagClass
      */
+    #[DataProvider('provideClasses')]
     public function testScopeWithAnyTags(string $tagClass): void
     {
         $this->product->attachTag('foo');
