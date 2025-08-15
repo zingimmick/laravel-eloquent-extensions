@@ -9,7 +9,7 @@ namespace Zing\LaravelEloquentImages\Tests;
  */
 final class ServiceProviderTest extends TestCase
 {
-    public function testConfig(): void 
+    public function testConfig(): void
     {
         $this->assertIsArray(config('eloquent-images'));
     }
