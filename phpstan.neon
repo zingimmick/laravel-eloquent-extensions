@@ -10,5 +10,6 @@ parameters:
     ignoreErrors:
         - identifier: missingType.generics
         - '#Call to function method_exists\(\) with \$this\(Zing\\(.*?)\\Tests\\(.*?)\) and (.*?)getProvidedData(.*?) will always evaluate to false.#'
+        - '#Call to an undefined method Illuminate\\Database\\Schema\\ForeignKeyDefinition::onDelete\(\).#'
         - '#Parameter \#1 \$key of method Illuminate\\Database\\Eloquent\\Model::getAttribute\(\) expects string, string\|null given.#'
         - '#Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Model::qualifyColumn\(\) expects string, string\|null given.#'
