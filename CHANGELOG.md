@@ -8,6 +8,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLinker](https://github.com/Symplify/ChangelogLinker).
 
 <!-- changelog-linker -->
+## 3.5.0 - 2026-03-18
+
+<!-- Release notes generated using configuration in .github/release.yml at 3.x -->
+### What's Changed
+
+#### Other Changes
+
+* Support for PHPUnit 12 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/151
+* Bump shivammathur/setup-php from 2.32.0 to 2.33.0 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/152
+* Bump shivammathur/setup-php from 2.33.0 to 2.34.0 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/153
+* Bump shivammathur/setup-php from 2.34.0 to 2.34.1 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/154
+* Bump shivammathur/setup-php from 2.34.1 to 2.35.1 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/155
+* Bump shivammathur/setup-php from 2.35.1 to 2.35.2 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/156
+* Bump actions/checkout from 4.2.2 to 5.0.0 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/157
+* Bump shivammathur/setup-php from 2.35.2 to 2.35.3 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/158
+* Bump shivammathur/setup-php from 2.35.3 to 2.35.4 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/159
+* Bump shivammathur/setup-php from 2.35.4 to 2.35.5 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/160
+* Support for PHP 8.5 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/161
+* Bump actions/checkout from 5.0.0 to 5.0.1 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/162
+* Bump actions/checkout from 5.0.1 to 6.0.0 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/163
+* Bump shivammathur/setup-php from 2.35.5 to 2.36.0 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/164
+* Bump actions/checkout from 6.0.0 to 6.0.1 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/165
+* Update license copyright year(s) by @github-actions[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/166
+* Bump actions/checkout from 6.0.1 to 6.0.2 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/167
+* Update orchestra/testbench version constraint by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/168
+* Support for Laravel 13 by @zingimmick in https://github.com/zingimmick/laravel-eloquent-extensions/pull/171
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/170
+* Bump shivammathur/setup-php from 2.36.0 to 2.37.0 by @dependabot[bot] in https://github.com/zingimmick/laravel-eloquent-extensions/pull/169
+
+**Full Changelog**: https://github.com/zingimmick/laravel-eloquent-extensions/compare/3.4.0...3.5.0
+
 ## 3.4.0 - 2025-02-24
 
 <!-- Release notes generated using configuration in .github/release.yml at 3.x -->
