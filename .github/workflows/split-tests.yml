@@ -31,7 +31,7 @@ jobs:
 
       - uses: shivammathur/setup-php@2.36.0
 
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@v4
 
       - run: vendor/bin/monorepo-builder localize-composer-paths packages/${{ matrix.package }}/composer.json --ansi
 
