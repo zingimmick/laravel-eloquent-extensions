@@ -19,11 +19,6 @@ final class BlameableTest extends TestCase
 {
     use WithFaker;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testContentWithCreatorAndUpdater(): void
     {
         $creator = User::query()->create();
